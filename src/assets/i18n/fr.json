@@ -1,0 +1,33 @@
+{
+    "Components": {
+        "Navbar": {
+            "Title": "Todo List",
+            "Signin": "Se connecter",
+            "Signup": "S'inscrire" 
+        }
+    },
+    "Pages": {
+        "Home": {
+            "Title": "Bienvenue sur la Todo List App 😊",
+            "SubTitle": "Ici, vous pourrez découper vos tâches de façon atomique. Cela vous permettra de placer un périmètre claire et ainsi prendre plus de hauteur sur votre projet !",
+            "Buttons": {
+                "GetStartedButton": "Commencer",
+                "LearnMoreButton": "En savoir plus"
+            }
+        },
+        "Signup": {
+            "Title": "S'inscrire.",
+            "Fields": {
+                "Name": "Nom",
+                "Email": "Email",
+                "Password": "Mot de passe"
+            },
+            "AlreadyAccount": "Vous possédez déjà un compte ?",
+            "Buttons": {
+                "Signup": "S'inscrire",
+                "Signin": "Se connecter",
+                "BackToHome": "Revenir sur l'écran d'acceuil"
+            }
+        }
+    }
+}

@@ -1,0 +1,31 @@
+<div class="container">
+    <ng-container *ngFor="let ball of balls">
+        <app-ball
+            [topLeft]="ball.property === 'topLeft'"
+            [topRight]="ball.property === 'topRight'"
+        ></app-ball>
+    </ng-container>
+    <div class="title-container">
+        <h1>{{ "Pages.Signup.Title" | translate }}</h1>
+    </div>
+    <div class="form-container">
+        <form class="form">
+            <input type="text" [placeholder]="'Pages.Signup.Fields.Name' | translate">
+            <input type="email" [placeholder]="'Pages.Signup.Fields.Email' | translate">
+            <input type="password" [placeholder]="'Pages.Signup.Fields.Password' | translate">
+            <div class="signup-button">
+                <p>{{ "Pages.Signup.Buttons.Signup" | translate }}</p>
+            </div>
+        </form>
+    </div>
+    <div class="already-account" (click)="navigateTo('/signin')">
+        <p>{{ "Pages.Signup.AlreadyAccount" | translate }}</p>
+        <div class="signin">
+            <p class="signin-button">{{ "Pages.Signup.Buttons.Signin" | translate }}</p>
+        </div>
+    </div>
+    <div class="back-to-home" (click)="navigateTo('/home')">
+        <mat-icon class="row" aria-hidden="false" aria-label="Row to back home">arrow_back</mat-icon>
+        <p>{{ "Pages.Signup.Buttons.BackToHome" | translate }}</p>
+    </div>
+</div>

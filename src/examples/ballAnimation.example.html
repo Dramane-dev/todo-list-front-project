@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style> 
+
+.circle {
+  background: black;
+  border-radius: 50%;
+  position: relative;
+  height: 300px;
+  width: 300px;
+  margin: 0;
+  animation: myfirst 2s infinite;
+  animation-direction: alternate;
+}
+
+/*
+div {
+  width: 100px;
+  height: 100px;
+  background: red;
+  position: relative;
+  animation: myfirst 5s 2;
+  animation-direction: alternate;
+}
+*/
+@keyframes myfirst {
+  0%  {background: 	black; left: 0px; top: 0px;}
+
+  100% {background: black; left: 0px; top: 200px;}
+}
+
+/*
+  25%  {background: black; left: 0px; top: 50px;}
+  50%  {background: black; left: 0px; top: 100px;}
+  75%  {background: black; left: 0px; top: 150px;}
+*/
+</style>
+</head>
+<body>
+
+<figure class="circle"></figure>
+
+<div></div>
+
+</body>
+</html>

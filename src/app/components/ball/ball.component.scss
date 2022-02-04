@@ -1,0 +1,152 @@
+.topLeft {
+    background: linear-gradient(90deg, rgba(130,48,160,1) 0%, rgba(193,83,139,1) 35%, rgba(219,125,97,1) 100%);
+    border-radius: 50%;
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    margin: 0px 0px 0px 0px;
+    animation: topLeftX 5s linear 0s infinite alternate, topLeftY 15s linear 0s infinite alternate;
+}
+
+@-webkit-keyframes topLeftX {
+    from { left: 0; } to { left: 95%; }
+  }
+  @-moz-keyframes topLeftX {
+    from { left: 0; } to { left: 95%; }
+  }
+  @-o-keyframes topLeftX {
+    from { left: 0; } to { left: 95%; }
+  }
+  @keyframes topLeftX {
+    from { left: 0; } to { left: 95%; }
+}
+
+@-webkit-keyframes topLeftY {
+    from { top: 0; } to { top: 90%; }
+  }
+  @-moz-keyframes topLeftY {
+    from { top: 0; } to { top: 90%; }
+  }
+  @-o-keyframes topLeftY {
+    from { top: 0; } to { top: 90%; }
+  }
+  @keyframes topLeftY {
+    from { top: 0; } to { top: 90%; }
+}
+
+.topRight {
+    background: linear-gradient(90deg, rgba(130,48,160,1) 0%, rgba(193,83,139,1) 35%, rgba(219,125,97,1) 100%);
+    border-radius: 50%;
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    margin: 0px 0px 0px 10px;
+    -webkit-animation: topRightX 3s linear 0s infinite alternate;
+    -moz-animation: topRightX 3s linear 0s infinite alternate;
+    -o-animation: topRightX 3s linear 0s infinite alternate;
+    animation: topRightX 5s linear 0s infinite alternate, topRightY 10s linear 0s infinite alternate;
+}
+
+@-webkit-keyframes topRightX {
+    from { right: 0; } to { right: 95%; }
+  }
+  @-moz-keyframes topRightX {
+    from { right: 0; } to { right: 95%; }
+  }
+  @-o-keyframes topRightX {
+    from { right: 0; } to { right: 95%; }
+  }
+  @keyframes topRightX {
+    from { right: 0; } to { right: 95%; }
+}
+
+@-webkit-keyframes topRightY {
+    from { top: 0; } to { top: 90%; }
+  }
+  @-moz-keyframes topRightY {
+    from { top: 0; } to { top: 90%; }
+  }
+  @-o-keyframes topRightY {
+    from { top: 0; } to { top: 90%; }
+  }
+  @keyframes topRightY {
+    from { top: 0; } to { top: 90%; }
+}
+
+.bottomLeft {
+    background: linear-gradient(90deg, rgba(30,30,41,1) 0%, rgba(36,36,45,1) 35%, rgba(91,91,107,1) 100%);
+    border-radius: 50%;
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    margin: 0px 0px 0px 10px;
+    -webkit-animation: topRightX 3s linear 0s infinite alternate;
+    -moz-animation: topRightX 3s linear 0s infinite alternate;
+    -o-animation: topRightX 3s linear 0s infinite alternate;
+    animation: bottomLeftX 5s linear 0s infinite alternate, bottomLeftY 15s linear 0s infinite alternate;
+}
+
+@-webkit-keyframes bottomLeftX {
+    from { right: 95%; } to { right: 0; }
+  }
+  @-moz-keyframes bottomLeftX {
+    from { right: 95%; } to { right: 0; }
+  }
+  @-o-keyframes bottomLeftX {
+    from { right: 95%; } to { right: 0; }
+  }
+  @keyframes bottomLeftX {
+    from { right: 95%; } to { right: 0; }
+}
+
+@-webkit-keyframes bottomLeftY {
+    from { top: 90%; } to { top: 0; }
+  }
+  @-moz-keyframes bottomLeftY {
+    from { top: 90%; } to { top: 0; }
+  }
+  @-o-keyframes bottomLeftY {
+    from { top: 90%; } to { top: 0; }
+  }
+  @keyframes bottomLeftY {
+    from { top: 90%; } to { top: 0; }
+}
+
+.bottomRight {
+    background: linear-gradient(90deg, rgba(30,30,41,1) 0%, rgba(36,36,45,1) 35%, rgba(91,91,107,1) 100%);
+    border-radius: 50%;
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    margin: 0px 0px 0px 10px;
+    -webkit-animation: topRightX 3s linear 0s infinite alternate;
+    -moz-animation: topRightX 3s linear 0s infinite alternate;
+    -o-animation: topRightX 3s linear 0s infinite alternate;
+    animation: bottomRightX 5s linear 0s infinite alternate, bottomRightY 15s linear 0s infinite alternate;
+}
+
+@-webkit-keyframes bottomRightX {
+    from { left: 95%; } to { left: 0; }
+  }
+  @-moz-keyframes bottomRightX {
+    from { left: 95%; } to { left: 0; }
+  }
+  @-o-keyframes bottomRightX {
+    from { left: 95%; } to { left: 0; }
+  }
+  @keyframes bottomRightX {
+    from { left: 95%; } to { left: 0; }
+}
+
+@-webkit-keyframes bottomRightY {
+    from { top: 90%; } to { top: 0; }
+  }
+  @-moz-keyframes bottomRightY {
+    from { top: 90%; } to { top: 0; }
+  }
+  @-o-keyframes bottomRightY {
+    from { top: 90%; } to { top: 0; }
+  }
+  @keyframes bottomRightY {
+    from { top: 90%; } to { top: 0; }
+}

@@ -1,0 +1,60 @@
+@import url("../../../theme/variables.scss");
+
+.navbar-container {
+    background-color: var(--dark-body-color);
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    margin: 5px;
+    font-size: large;
+    color: var(--white);
+
+    .navbar {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        height: 100%;
+
+        .logo-and-home-container {
+            display: flex; 
+            flex-direction: row; 
+            margin-left: 2%;
+
+            .home {
+                font-size: 30px;
+                font-weight: 700;
+                cursor: pointer;
+            }
+        }
+
+        .spacer {
+            flex: 1;
+        }
+
+        .navbar-item-auth {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+
+        .navbar-item-border {
+            border: 2px solid var(--gray-before-navbar-item-border);
+            border-radius: 20px;
+            margin: auto;
+            cursor: pointer;
+        }
+
+        .navbar-item-border:hover {
+            border: 2px solid #f46eaa;
+        }
+
+        .navbar-item-border-signin {
+            margin-right: 20px;
+        }
+        
+        .navbar-item {
+            margin: 15px;
+        }
+    }
+}

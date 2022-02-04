@@ -1,0 +1,15 @@
+<header class="navbar-container">
+    <div class="navbar">
+        <div class="logo-and-home-container" (click)="navigateTo('/home')">
+            <img class="tasks-logo" src="../../../assets/images/tsks-logo.svg" alt="tasks-logo">
+            <div class="navbar-item home">{{ "Components.Navbar.Title" | translate }}</div>
+        </div>
+        <div class="spacer"></div>
+        <div class="navbar-item-border navbar-item-border-signin" (click)="navigateTo('/signin')">
+            <div class="navbar-item signin">{{ "Components.Navbar.Signin" | translate }}</div>
+        </div>
+        <div class="navbar-item-border" (click)="navigateTo('/signup')">
+            <div class="navbar-item signup">{{ "Components.Navbar.Signup" | translate }}</div>
+        </div>
+    </div>
+</header>
