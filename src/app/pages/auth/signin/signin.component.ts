@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from "@angular/router";
 interface Ball {
   property: string
 }
@@ -19,9 +19,12 @@ export class SigninComponent implements OnInit {
     }
   ];
   
-  constructor() { }
+  constructor(private _router: Router) { }
 
   ngOnInit(): void {
   }
 
+  navigateTo(url: string): void {
+    this._router.navigateByUrl(url);
+  }
 }

@@ -1,0 +1,92 @@
+<div class="dashboard-container">
+    <div class="projects-column-container">
+        <div class="projects-title-container">
+            <mat-icon class="assignment-icon" aria-hidden="false" aria-label="Assignment icon">assignment</mat-icon>
+            <h3>{{ "Pages.Dashboard.ProjectList.Title" | translate }}</h3>
+        </div>
+        <app-new-project-button
+            [newProjectButton]="true"
+        ></app-new-project-button>
+    </div>
+    <div class="todos-column-container">
+        <div class="project-title-container">
+            <mat-icon class="check-icon" aria-hidden="false" aria-label="Check icon">check</mat-icon>
+            <h1>Todos list</h1>
+        </div>
+        <div class="project-description-container">
+            <p>Project description</p>
+        </div>
+        <div class="todos-list-container">
+            <div class="todo-list-wrapper">
+                <div class="todo-list-columns" cdkDropListGroup>
+                    <div class="todo-column">
+                        <div class="column-title">
+                            {{ "Pages.Dashboard.TodosList.TodoTitle" | translate }}
+                        </div>
+
+                        <div class="tasks-container"
+                            cdkDropList
+                            #todoList="cdkDropList"
+                            [cdkDropListData]="todos"
+                            (cdkDropListDropped)="drop($event)" 
+                        >
+                            <ng-container *ngFor="let task of todos">
+                                <app-task 
+                                    cdkDrag
+                                    [taskName]="task"
+                                ></app-task>
+                            </ng-container>
+                            <app-new-project-button
+                                [newTaskButton]="true"
+                            ></app-new-project-button>
+                        </div>
+                    </div>
+                    <div class="todo-column">
+                        <div class="column-title">
+                            {{ "Pages.Dashboard.TodosList.DoingTitle" | translate }}
+                        </div>
+
+                        <div class="tasks-container"
+                            cdkDropList
+                            #todoList="cdkDropList"
+                            [cdkDropListData]="doing"
+                            (cdkDropListDropped)="drop($event)"
+                        >
+                            <ng-container *ngFor="let doingTask of doing">
+                                <app-task 
+                                    cdkDrag
+                                    [taskName]="doingTask"
+                                ></app-task>
+                            </ng-container>
+                            <app-new-project-button
+                                [newTaskButton]="true"
+                            ></app-new-project-button>
+                        </div>
+                    </div>
+                    <div class="todo-column">
+                        <div class="column-title">
+                            {{ "Pages.Dashboard.TodosList.DoneTitle" | translate }}
+                        </div>
+
+                        <div class="tasks-container"
+                            cdkDropList
+                            #todoList="cdkDropList"
+                            [cdkDropListData]="done"
+                            (cdkDropListDropped)="drop($event)"
+                        >
+                            <ng-container *ngFor="let doneTask of done">
+                                <app-task
+                                    cdkDrag
+                                    [taskName]="doneTask"
+                                ></app-task>
+                            </ng-container>
+                            <app-new-project-button
+                                [newTaskButton]="true"
+                            ></app-new-project-button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

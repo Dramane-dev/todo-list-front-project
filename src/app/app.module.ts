@@ -4,7 +4,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +14,9 @@ import { HomeComponent } from './pages/home/home.component';
 import { BallComponent } from './components/ball/ball.component';
 import { SigninComponent } from './pages/auth/signin/signin.component';
 import { SignupComponent } from './pages/auth/signup/signup.component';
+import { NewProjectButtonComponent } from './components/new-project-button/new-project-button.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { TaskComponent } from './components/task/task.component';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
@@ -25,7 +29,10 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     HomeComponent,
     BallComponent,
     SigninComponent,
-    SignupComponent
+    SignupComponent,
+    NewProjectButtonComponent,
+    DashboardComponent,
+    TaskComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,7 +46,8 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
             deps: [HttpClient],
         },
     }),
-    MatIconModule
+    MatIconModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]

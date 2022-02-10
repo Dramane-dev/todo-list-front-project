@@ -4,7 +4,6 @@
     justify-content: center;
     align-items: center;
     height: 80vh;
-    border: 2px solid var(--pink-navbar-item-border);
 
     .banner-title {
         font-size: xx-large;
@@ -35,7 +34,7 @@
         .get-started-button {
             width: 20%;
             margin: 10px;
-            background: linear-gradient(90deg, rgba(130,48,160,1) 0%, rgba(193,83,139,1) 35%, rgba(219,125,97,1) 100%);
+            background: var(--button-background);
             border-radius: 20px;
             cursor: pointer;
 

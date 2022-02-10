@@ -47,7 +47,7 @@
     .signup-button {
         width: 70%;
         position: relative;
-        background: linear-gradient(90deg, rgba(130,48,160,1) 0%, rgba(193,83,139,1) 35%, rgba(219,125,97,1) 100%);
+        background: var(--button-background);
         border-radius: 10px;
         cursor: pointer;
         margin-top: 3%;

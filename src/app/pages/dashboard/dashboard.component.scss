@@ -1,0 +1,96 @@
+.dashboard-container {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    
+    .projects-column-container {
+        height: fit-content;
+        border: 1px solid var(--white);
+        padding: 2%;
+
+        .projects-title-container {
+            display: flex;
+            color: var(--white);
+            font-weight: 600;
+
+            .assignment-icon {
+                justify-content: flex-start;
+                margin: 12px 10px 0 10px;
+                font-weight: 600;
+                font-size: 30px;
+                margin-right: 5%;
+            }
+        }
+    }
+
+    .todos-column-container {
+        height: fit-content;
+        border: 1px solid var(--white);
+
+        .project-title-container {
+            display: flex;
+            color: var(--white);
+            font-weight: 600;
+
+            .check-icon {
+                justify-content: flex-start;
+                margin: 12px 10px 0 10px;
+                font-weight: 600;
+                font-size: 50px;
+                margin-right: 5%;
+            }
+        }
+
+        .project-description-container {
+            border: 1px solid var(--white);
+            color: var(--white);
+            margin-left: 2%;
+            margin-right: 30%;
+            margin-bottom: 2%;
+        }
+    }
+
+    .todos-list-container {
+        display: flex;
+        justify-content: space-around;
+        border: 1px solid var(--white);
+
+        .todo-list-wrapper {
+            display: flex;
+            flex-grow: 1;
+            overflow-x: auto;
+
+            .todo-list-columns {
+                display: flex;
+                flex-grow: 1;
+
+                .todo-column {
+                    display: flex;
+                    flex-direction: column;
+                    flex-grow: 1;
+                    flex-basis: 0;
+
+                    min-width: 20%;
+                    margin: 1%;
+                    padding: 25px;
+
+                    border-radius: 4px;
+                    background-color: var(--white);
+
+                    &:not(:first-child) {
+                        margin-left: 0;
+                    }
+
+                    .column-title {
+                        font-size: 20px;
+                        font-weight: 700;
+                        text-transform: uppercase;
+                    }
+                }
+            }
+        }
+    }
+
+    .tasks-container {
+        flex-grow: 1;
+    }
+}
