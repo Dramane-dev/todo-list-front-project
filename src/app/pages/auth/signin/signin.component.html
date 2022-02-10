@@ -6,25 +6,25 @@
         ></app-ball>
     </ng-container>
     <div class="title-container">
-        <h1>{{ "Pages.Signup.Title" | translate }}</h1>
+        <h1>{{ "Pages.Signin.Title" | translate }}</h1>
     </div>
     <div class="form-container">
         <form class="form">
-            <input type="text" [placeholder]="'Pages.Signup.Fields.Name' | translate">
-            <input type="email" [placeholder]="'Pages.Signup.Fields.Email' | translate">
-            <input type="password" [placeholder]="'Pages.Signup.Fields.Password' | translate">
+            <input type="email" [placeholder]="'Pages.Signin.Fields.Email' | translate">
+            <input type="password" [placeholder]="'Pages.Signin.Fields.Password' | translate">
             <div class="signup-button">
-                <p>{{ "Pages.Signup.Buttons.Signup" | translate }}</p>
+                <p>{{ "Pages.Signin.Buttons.Signin" | translate }}</p>
             </div>
         </form>
     </div>
-    <div class="already-account">
-        <p>{{ "Pages.Signup.AlreadyAccount" | translate }}</p>
-        <div class="signin">
-            <p>{{ "Pages.Signup.Buttons.Signin" | translate }}</p>
+    <div class="not-account" (click)="navigateTo('/signup')">
+        <p>{{ "Pages.Signin.AlreadyAccount" | translate }}</p>
+        <div class="signup">
+            <p class="not-account-signup-button">{{ "Pages.Signin.Buttons.Signup" | translate }}</p>
         </div>
     </div>
-    <div class="back-to-home">
-        <p>{{ "Pages.Signup.Buttons.BackToHome" | translate }}</p>
+    <div class="back-to-home" (click)="navigateTo('/home')">
+        <mat-icon class="row" aria-hidden="false" aria-label="Row to back home">arrow_back</mat-icon>
+        <p>{{ "Pages.Signin.Buttons.BackToHome" | translate }}</p>
     </div>
 </div>

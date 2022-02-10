@@ -4,12 +4,16 @@
             "Title": "Todo List",
             "Signin": "Se connecter",
             "Signup": "S'inscrire" 
+        },
+        "NewProjectButton": {
+            "Title": "Nouveau projet",
+            "NewTask": "Ajouter une tâche"
         }
     },
     "Pages": {
         "Home": {
             "Title": "Bienvenue sur la Todo List App 😊",
-            "SubTitle": "Ici, vous pourrez découper vos tâches de façon atomique. Cela vous permettra de placer un périmètre claire et ainsi prendre plus de hauteur sur votre projet !",
+            "SubTitle": "Ici, vous pourrez découper vos tâches de façon atomique. Cela vous permettra de placer un périmètre claire et ainsi prendre plus de hauteur sur vos projets !",
             "Buttons": {
                 "GetStartedButton": "Commencer",
                 "LearnMoreButton": "En savoir plus"
@@ -27,6 +31,32 @@
                 "Signup": "S'inscrire",
                 "Signin": "Se connecter",
                 "BackToHome": "Revenir sur l'écran d'acceuil"
+            }
+        },
+        "Signin": {
+            "Title": "Se connecter.",
+            "Fields": {
+                "Email": "Email",
+                "Password": "Mot de passe"
+            },
+            "AlreadyAccount": "Vous ne possédez pas de compte ?",
+            "Buttons": {
+                "Signup": "S'inscrire",
+                "Signin": "Se connecter",
+                "BackToHome": "Revenir sur l'écran d'acceuil",
+                "ForgotPassword": "Mot de passe oublié ?"
+            }
+        },
+        "Dashboard": {
+            "ProjectList": {
+                "Title": "Mes projets",
+                "Settings": "Paramètres",
+                "NewProject": "Nouveau projet"
+            },
+            "TodosList": {
+                "TodoTitle": "À faire",
+                "DoingTitle": "En cours",
+                "DoneTitle": "Fait"
             }
         }
     }

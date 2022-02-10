@@ -1,0 +1,20 @@
+<ng-container [ngSwitch]="true">
+    <ng-container *ngSwitchCase="newProjectButton">
+        <div [class.newProjectButton]="newProjectButton">
+            <mat-icon class="row" aria-hidden="false" aria-label="Add new project">add</mat-icon>
+            <p>{{ "Components.NewProjectButton.Title" | translate }}</p>
+        </div>
+    </ng-container>
+    <ng-container *ngSwitchCase="projectButton">
+        <div [class.projectButton]="projectButton">
+            <mat-icon class="row" aria-hidden="false" aria-label="Check your project">play_arrow</mat-icon>
+            <p>{{ "Components.NewProjectButton.Title" | translate }}</p>
+        </div>
+    </ng-container>
+    <ng-container *ngSwitchCase="newTaskButton">
+        <div [class.newTaskButton]="newTaskButton">
+            <mat-icon class="row" aria-hidden="false" aria-label="Add new project">add</mat-icon>
+            <p>{{ "Components.NewProjectButton.NewTask" | translate }}</p>
+        </div>
+    </ng-container>
+</ng-container>

@@ -5,7 +5,6 @@
     margin-top: 2%;
     align-items: center;
     color: var(--white);
-    border: 1px solid var(--pink-navbar-item-border);
 
     .title-container {
         font-weight: 700;
@@ -14,24 +13,22 @@
 
     .form-container {
         width: 50%;
-        border: 1px solid var(--pink-navbar-item-border);
 
         .form {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            border: 1px solid var(--pink-navbar-item-border);
     
             input {
                 margin: 3%;
-                padding: 1%;
+                padding: 1.5%;
                 background: none;
                 border: none;
                 outline: none;
                 color: var(--white);
                 height: 40px;
-                width: 50%;
+                width: 70%;
                 border: 2px solid var(--border-input-color);
                 border-radius: 10px;
                 font-size: medium;
@@ -48,9 +45,9 @@
     }
 
     .signup-button {
-        width: 50%;
+        width: 70%;
         position: relative;
-        background: linear-gradient(90deg, rgba(130,48,160,1) 0%, rgba(193,83,139,1) 35%, rgba(219,125,97,1) 100%);
+        background: var(--button-background);
         border-radius: 10px;
         cursor: pointer;
         margin-top: 3%;
@@ -69,11 +66,35 @@
         }
     }
 
-    .already-account {
-        
+    .not-account {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin-top: 2%;
+
+        p {
+            color: var(--gray-already-account);
+        }
+
+        .signup {
+            margin-left: 10px;
+
+            .not-account-signup-button {
+                color: var(--white);
+                font-weight: 600;
+                cursor: pointer;
+            }
+        }
     }
 
     .back-to-home {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        cursor: pointer;
 
+        .row {
+            margin: 12px 10px 0 10px;
+        }
     }
 }
