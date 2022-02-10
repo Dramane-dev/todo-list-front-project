@@ -1,0 +1,54 @@
+.newProjectButton {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    background: var(--button-background);
+    color: var(--white);
+    font-weight: 600;
+    cursor: pointer;
+
+    .row {
+        justify-content: flex-start;
+        margin: 12px 10px 0 10px;
+        font-weight: 600;
+        margin-right: 15%;
+    }
+}
+
+.projectButton {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    border-radius: 10px;
+    background: var(--button-background);
+    color: var(--white);
+    font-weight: 600;
+    cursor: pointer;
+
+    .row {
+        justify-content: flex-start;
+        margin: 12px 10px 0 10px;
+        font-weight: 600;
+        margin-right: 15%;
+    }
+}
+
+.newTaskButton {
+    display: flex;
+    flex-direction: row;
+    border-radius: 10px;
+    background: var(--button-background);
+    color: var(--white);
+    font-weight: 600;
+    cursor: pointer;
+
+    .row {
+        justify-content: flex-start;
+        margin: 12px 10px 0 10px;
+        font-weight: 900;
+        margin-right: 15%;
+    }
+}
