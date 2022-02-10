@@ -9,7 +9,7 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag
 export class DashboardComponent implements OnInit {
   public todos: string[] = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
   public doing: string[] = ['Get up', 'Brush teeth', 'Take a shower', 'Check e-mail', 'Walk dog'];
-  public done: string[] = ['Get up', 'Brush teeth', 'Take a shower', 'Check e-mail', 'Walk dog'];
+  public done: string[] = ['Get up up', 'Brush teeth', 'Take a shower', 'Check e-mail', 'Walk dog'];
 
   constructor() { }
 
