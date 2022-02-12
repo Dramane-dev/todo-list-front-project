@@ -7,7 +7,8 @@
         },
         "NewProjectButton": {
             "Title": "Nouveau projet",
-            "NewTask": "Ajouter une tâche"
+            "NewTask": "Ajouter une tâche",
+            "Settings": "Paramètres"
         }
     },
     "Pages": {

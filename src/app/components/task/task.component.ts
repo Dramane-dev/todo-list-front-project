@@ -7,10 +7,16 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class TaskComponent implements OnInit {
   @Input() taskName: string = "";
-  
+  @Input() taskDescription: string = "";
+  @Input() taskCreatedAt: string = "";
+  @Input() taskStatus: string = "";
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  deleteTask() {
+    console.log('Implement the delete Task function');
+  }
 }

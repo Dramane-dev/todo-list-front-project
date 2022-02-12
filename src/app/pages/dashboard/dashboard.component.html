@@ -5,13 +5,23 @@
             <h3>{{ "Pages.Dashboard.ProjectList.Title" | translate }}</h3>
         </div>
         <app-new-project-button
+            [settingsButton]="true"
+        ></app-new-project-button>
+        <ng-container *ngFor="let project of projects">
+            <app-new-project-button
+                [projectButton]="true"
+                [projectName]="project"
+                (click)="changeProjectTitle(project)"
+            ></app-new-project-button>
+        </ng-container>
+        <app-new-project-button
             [newProjectButton]="true"
         ></app-new-project-button>
     </div>
     <div class="todos-column-container">
         <div class="project-title-container">
             <mat-icon class="check-icon" aria-hidden="false" aria-label="Check icon">check</mat-icon>
-            <h1>Todos list</h1>
+            <h1>{{ projectName }}</h1>
         </div>
         <div class="project-description-container">
             <p>Project description</p>

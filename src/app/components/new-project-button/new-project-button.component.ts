@@ -8,8 +8,10 @@ import { Component, Input, OnInit } from '@angular/core';
 export class NewProjectButtonComponent implements OnInit {
   @Input() newProjectButton: boolean = false;
   @Input() projectButton: boolean = false;
+  @Input() projectName: string = "";
   @Input() newTaskButton: boolean = false;
-  
+  @Input() settingsButton: boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {

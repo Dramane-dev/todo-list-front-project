@@ -1,10 +1,56 @@
 .task {
     display: flex;
-    padding: 7% 7%;
+    flex-direction: column;
+    padding: 5% 5%;
     background-color: var(--home-learnmore-button);
     border-radius: 10px;
     margin-top: 5%;
-    margin-bottom: 2%;
+    margin-bottom: 5%;
     box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.5), 0 3px 14px 2px rgba(0, 0, 0, 0.5);
     color: white;
+
+    div {
+        margin-top: 2%;
+        margin-bottom: 2%;
+    }
+
+    .top-card {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .title {
+        font-weight: 600;
+    }
+
+    .task-setting {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        margin: 0;
+        padding: 0;
+
+        .check-icon {
+            margin: 0;
+            padding: 0;
+            cursor: pointer;
+        }
+    }
+
+    .card-footer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        .createdAt {
+            width: 30%;
+            padding: 2%;
+            background-color: var(--task-created-at-color);
+            color: var(--dark-body-color);
+            text-align: center;
+            border-radius: 5px;
+            font-weight: 600;
+        }
+    }
 }

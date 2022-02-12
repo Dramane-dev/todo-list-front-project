@@ -1,3 +1,20 @@
 <div class="task">
-    {{ taskName }}
+    <div class="top-card">
+        <div class="title">
+            [ {{ taskName }} ]
+        </div>
+        <div class="task-setting">
+            <mat-icon class="check-icon" aria-hidden="false" aria-label="Check icon" (click)="deleteTask()">remove_circle_outline</mat-icon>
+        </div>
+    </div>
+    <div class="description">
+        description blablabla
+        {{ taskDescription }}
+    </div>
+    <div class="card-footer">
+        <div class="createdAt">
+            12/02/2022 
+          {{ taskCreatedAt }}  
+        </div>
+    </div>
 </div>
