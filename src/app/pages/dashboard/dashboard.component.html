@@ -40,15 +40,17 @@
                             [cdkDropListData]="todos"
                             (cdkDropListDropped)="drop($event)" 
                         >
-                            <ng-container *ngFor="let task of todos">
-                                <app-task 
-                                    cdkDrag
-                                    [taskName]="task"
-                                ></app-task>
-                            </ng-container>
                             <app-new-project-button
                                 [newTaskButton]="true"
                             ></app-new-project-button>
+                            <ng-container *ngFor="let task of todos">
+                                <app-task 
+                                    cdkDrag
+                                    mat-raised-button
+                                    [taskName]="task"
+                                    (click)="openUpdateTaskPopup(task, task)"
+                                ></app-task>
+                            </ng-container>
                         </div>
                     </div>
                     <div class="todo-column">
@@ -62,15 +64,16 @@
                             [cdkDropListData]="doing"
                             (cdkDropListDropped)="drop($event)"
                         >
+                            <app-new-project-button
+                                [newTaskButton]="true"
+                            ></app-new-project-button>
                             <ng-container *ngFor="let doingTask of doing">
                                 <app-task 
                                     cdkDrag
                                     [taskName]="doingTask"
+                                    (click)="openUpdateTaskPopup(doingTask, doingTask)"
                                 ></app-task>
                             </ng-container>
-                            <app-new-project-button
-                                [newTaskButton]="true"
-                            ></app-new-project-button>
                         </div>
                     </div>
                     <div class="todo-column">
@@ -84,15 +87,16 @@
                             [cdkDropListData]="done"
                             (cdkDropListDropped)="drop($event)"
                         >
+                            <app-new-project-button
+                                    [newTaskButton]="true"
+                            ></app-new-project-button>
                             <ng-container *ngFor="let doneTask of done">
                                 <app-task
                                     cdkDrag
                                     [taskName]="doneTask"
+                                    (click)="openUpdateTaskPopup(doneTask, doneTask)"
                                 ></app-task>
                             </ng-container>
-                            <app-new-project-button
-                                [newTaskButton]="true"
-                            ></app-new-project-button>
                         </div>
                     </div>
                 </div>

@@ -8,6 +8,11 @@ body {
     background-color: var(--dark-body-color);
 }
 
+
+mat-dialog-container {
+    background-color: var(--dark-body-color) !important;
+}
+
 body::-webkit-scrollbar {
     display: none;
 }

@@ -5,6 +5,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -17,6 +18,7 @@ import { SignupComponent } from './pages/auth/signup/signup.component';
 import { NewProjectButtonComponent } from './components/new-project-button/new-project-button.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { TaskComponent } from './components/task/task.component';
+import { PopupComponent } from './components/popup/popup.component';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
@@ -33,6 +35,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     NewProjectButtonComponent,
     DashboardComponent,
     TaskComponent,
+    PopupComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +50,8 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
         },
     }),
     MatIconModule,
-    DragDropModule
+    DragDropModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
