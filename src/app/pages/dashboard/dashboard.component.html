@@ -42,13 +42,14 @@
                         >
                             <app-new-project-button
                                 [newTaskButton]="true"
+                                (click)="openUpdateTaskPopup('', '', true, false)"
                             ></app-new-project-button>
                             <ng-container *ngFor="let task of todos">
                                 <app-task 
                                     cdkDrag
                                     mat-raised-button
                                     [taskName]="task"
-                                    (click)="openUpdateTaskPopup(task, task)"
+                                    (click)="openUpdateTaskPopup(task, task, false, true)"
                                 ></app-task>
                             </ng-container>
                         </div>
@@ -66,12 +67,13 @@
                         >
                             <app-new-project-button
                                 [newTaskButton]="true"
+                                (click)="openUpdateTaskPopup('', '', true, false)"
                             ></app-new-project-button>
                             <ng-container *ngFor="let doingTask of doing">
                                 <app-task 
                                     cdkDrag
                                     [taskName]="doingTask"
-                                    (click)="openUpdateTaskPopup(doingTask, doingTask)"
+                                    (click)="openUpdateTaskPopup(doingTask, doingTask, false, true)"
                                 ></app-task>
                             </ng-container>
                         </div>
@@ -89,12 +91,13 @@
                         >
                             <app-new-project-button
                                     [newTaskButton]="true"
+                                    (click)="openUpdateTaskPopup('', '', true, false)"
                             ></app-new-project-button>
                             <ng-container *ngFor="let doneTask of done">
                                 <app-task
                                     cdkDrag
                                     [taskName]="doneTask"
-                                    (click)="openUpdateTaskPopup(doneTask, doneTask)"
+                                    (click)="openUpdateTaskPopup(doneTask, doneTask, false, true)"
                                 ></app-task>
                             </ng-container>
                         </div>

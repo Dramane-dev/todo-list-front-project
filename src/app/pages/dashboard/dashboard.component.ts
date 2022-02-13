@@ -40,17 +40,20 @@ export class DashboardComponent implements OnInit {
     this.projectName = projectName;
   }
 
-  openUpdateTaskPopup(taskName: string, taskDescription: string): void {
+  openUpdateTaskPopup(taskName?: string, taskDescription?: string, isNewTaskPopup?: boolean, isUpdateTaskPopup?: boolean): void {
     const popupRef = this.dialog.open(PopupComponent, {
       width: '30%',
       data: { 
         taskName: taskName,
-        description: taskDescription
+        taskDescription: taskDescription,
+        isNewTaskPopup: isNewTaskPopup,
+        isUpdateTaskPopup: isUpdateTaskPopup
       }
     });
-
+    
     popupRef.afterClosed().subscribe(result => {
       console.log('pop up closed');
+      console.log(result);
     });
   }
 }

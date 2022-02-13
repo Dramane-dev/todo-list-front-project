@@ -9,6 +9,14 @@
             "Title": "Nouveau projet",
             "NewTask": "Ajouter une tâche",
             "Settings": "Paramètres"
+        },
+        "Popup": {
+            "Title": "Nouvelle tâche",
+            "Buttons": {
+                "UpdateButtonTitle": "Mettre à jour",
+                "CreateButtonTitle": "Créer",
+                "CancelButtonTitle": "Annuler"
+            }
         }
     },
     "Pages": {
