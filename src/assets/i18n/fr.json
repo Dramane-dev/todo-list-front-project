@@ -16,6 +16,27 @@
                 "UpdateButtonTitle": "Mettre à jour",
                 "CreateButtonTitle": "Créer",
                 "CancelButtonTitle": "Annuler"
+            },
+            "DeleteTask": {
+                "Title": "Supprimer une tâche",
+                "SubTitle": "Voulez-vous vraiment supprimer cette tâche ?",
+                "Buttons": {
+                    "Delete": "Supprimer",
+                    "Cancel": "Annuler"
+                }
+            },
+            "NewProject": {
+                "Title": "Nouveau projet",
+                "Buttons": {
+                    "Create": "Créer",
+                    "Cancel": "Annuler"
+                }
+            },
+            "Form": {
+                "Labels": {
+                    "Name": "Nom",
+                    "Description": "Description"
+                }
             }
         }
     },

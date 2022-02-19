@@ -7,6 +7,10 @@
         <app-new-project-button
             [settingsButton]="true"
         ></app-new-project-button>
+        <app-new-project-button
+            [newProjectButton]="true"
+            (click)="openUpdateTaskPopup('', '', false, false, false, true)"
+        ></app-new-project-button>
         <ng-container *ngFor="let project of projects">
             <app-new-project-button
                 [projectButton]="true"
@@ -14,9 +18,6 @@
                 (click)="changeProjectTitle(project)"
             ></app-new-project-button>
         </ng-container>
-        <app-new-project-button
-            [newProjectButton]="true"
-        ></app-new-project-button>
     </div>
     <div class="todos-column-container">
         <div class="project-title-container">
@@ -49,7 +50,8 @@
                                     cdkDrag
                                     mat-raised-button
                                     [taskName]="task"
-                                    (click)="openUpdateTaskPopup(task, task, false, true)"
+                                    (isDeletedButton)="setDeletedButton($event)"
+                                    (click)="openUpdateTaskPopup(task, task, false, isDeletedButton ? false : true, isDeletedButton)"
                                 ></app-task>
                             </ng-container>
                         </div>
@@ -73,7 +75,8 @@
                                 <app-task 
                                     cdkDrag
                                     [taskName]="doingTask"
-                                    (click)="openUpdateTaskPopup(doingTask, doingTask, false, true)"
+                                    (isDeletedButton)="setDeletedButton($event)"
+                                    (click)="openUpdateTaskPopup(doingTask, doingTask, false, isDeletedButton ? false : true, isDeletedButton)"
                                 ></app-task>
                             </ng-container>
                         </div>
@@ -97,7 +100,8 @@
                                 <app-task
                                     cdkDrag
                                     [taskName]="doneTask"
-                                    (click)="openUpdateTaskPopup(doneTask, doneTask, false, true)"
+                                    (isDeletedButton)="setDeletedButton($event)"
+                                    (click)="openUpdateTaskPopup(doneTask, doneTask, false, isDeletedButton ? false : true, isDeletedButton)"
                                 ></app-task>
                             </ng-container>
                         </div>

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-task',
@@ -10,13 +10,20 @@ export class TaskComponent implements OnInit {
   @Input() taskDescription: string = "";
   @Input() taskCreatedAt: string = "";
   @Input() taskStatus: string = "";
+  @Output() isDeletedButton: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() isUpdatedButton: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  deleteTask() {
+  updateTask() {
+    this.isUpdatedButton.emit(true);
+  }
+
+  deleteTask(isDelete: boolean) {
     console.log('Implement the delete Task function');
+    this.isDeletedButton.emit(isDelete);
   }
 }
