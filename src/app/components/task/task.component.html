@@ -1,10 +1,12 @@
 <div class="task">
     <div class="top-card">
         <div class="title">
-            [ {{ taskName }} ]
+            {{ taskName }}
         </div>
         <div class="task-setting">
-            <mat-icon class="check-icon" aria-hidden="false" aria-label="Check icon" (click)="deleteTask(true)">remove_circle_outline</mat-icon>
+            <mat-icon class="check-icon" aria-hidden="false" aria-label="Check icon" (click)="deleteTask(true)"
+                >remove_circle_outline</mat-icon
+            >
         </div>
     </div>
     <div class="description">
@@ -13,8 +15,8 @@
     </div>
     <div class="card-footer">
         <div class="createdAt">
-            12/02/2022 
-          {{ taskCreatedAt }}  
+            12/02/2022
+            {{ taskCreatedAt }}
         </div>
     </div>
 </div>

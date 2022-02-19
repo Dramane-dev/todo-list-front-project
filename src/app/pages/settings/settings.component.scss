@@ -1,0 +1,142 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .banner-container {
+        width: 90%;
+        height: 200px;
+        margin: 2% auto 0 auto;
+        border: 2px solid var(--white);
+        border-radius: 50px 10px 10px 10px;
+        background: var(--button-background);
+    }
+
+    .profile-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 90%;
+        height: 100px;
+        margin: 0 auto 0 auto;
+        border: 2px solid var(--white);
+
+        .user-pixe {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            border: 2px solid var(--white);
+            height: 150px;
+            width: 150px;
+            border-radius: 50%;
+            top: 30%;
+            left: 7%;
+            position: absolute;
+            background-color: var(--dark-body-color);
+            cursor: pointer;
+
+            img {
+                margin: auto 0 auto 0;
+                height: 90px;
+            }
+        }
+
+        .profile-content {
+            margin: auto 0 auto 20%;
+            color: var(--white);
+
+            .profile-title {
+                font-size: 30px;
+                font-weight: 700;
+                margin-bottom: 3.5%;
+            }
+        }
+    }
+
+    .update-profile-container {
+        width: 90%;
+        height: 80vh;
+        margin-left: auto;
+        margin-right: auto;
+        border: 2px solid var(--white);
+
+        .fields-container {
+            width: 100%;
+            margin: 5% auto 0 auto;
+
+            .separator {
+                width: 80%;
+                margin: 0 auto 0 auto;
+                border: 0.5px solid var(--white);
+            }
+
+            .username-container {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+
+                label {
+                    margin: 3% 3% 3% 15%;
+                    font-size: 20px;
+                    font-weight: 600;
+                    color: var(--white);
+                }
+
+                input {
+                    outline: none;
+                    background: none;
+                    border: none;
+                    background-color: var(--white);
+                    margin: 3% 15% 3% 3%;
+                    padding: 1%;
+                    width: 30%;
+                    border-radius: 5px;
+                }
+
+                textarea {
+                    height: 80px;
+                    width: 30%;
+                    resize: none;
+                    outline: none;
+                    background: none;
+                    border: none;
+                    background-color: var(--white);
+                    margin: 3% 15% 3% 3%;
+                    padding: 1%;
+                    border-radius: 5px;
+                }
+            }
+        }
+
+        .buttons-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            margin: 5% auto auto auto;
+            color: var(--white);
+            width: 90%;
+            text-align: center;
+            align-items: center;
+
+            .save-button {
+                padding: 2%;
+                text-align: center;
+                width: 30%;
+                cursor: pointer;
+                background: var(--green-pastel);
+                border-radius: 5px;
+                font-weight: 600;
+            }
+
+            .cancel-button {
+                padding: 2%;
+                text-align: center;
+                width: 30%;
+                cursor: pointer;
+                background: var(--red-pastel);
+                border-radius: 5px;
+                font-weight: 600;
+            }
+        }
+    }
+}

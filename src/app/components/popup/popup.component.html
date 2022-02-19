@@ -1,32 +1,40 @@
 <ng-container [ngSwitch]="true">
+    <div class="popup-container" *ngSwitchCase="isNewTaskPopup">
+        <div class="popup-title">
+            <p>[ {{ "Components.Popup.CreateTask.Title" | translate }} ]</p>
+        </div>
+        <div class="inputs-container" [formGroup]="taskForm">
+            <label>{{ "Components.Popup.Form.Labels.Name" | translate }}</label>
+            <input type="text" formControlName="taskName" />
+            <label>{{ "Components.Popup.Form.Labels.Description" | translate }}</label>
+            <textarea formControlName="taskDescription"></textarea>
+        </div>
+        <div class="buttons-container">
+            <div class="create-button" [mat-dialog-close]="data" (click)="isNewTaskPopup ? createTask() : updateTask()">
+                {{ "Components.Popup.CreateTask.Buttons.Create" | translate }}
+            </div>
+            <div class="cancel-button" (click)="popupClosed()">
+                {{ "Components.Popup.CreateTask.Buttons.Cancel" | translate }}
+            </div>
+        </div>
+    </div>
     <div class="popup-container" *ngSwitchCase="isUpdateTaskPopup">
         <div class="popup-title">
             <p>[ {{ data.taskName }} ]</p>
         </div>
         <div class="inputs-container" [formGroup]="taskForm">
             <label>{{ "Components.Popup.Form.Labels.Name" | translate }}</label>
-            <input class="update-task-name" type="text" formControlName="taskName">
+            <input type="text" formControlName="taskName" />
             <label>{{ "Components.Popup.Form.Labels.Description" | translate }}</label>
-            <textarea class="update-task-description" formControlName="taskDescription"></textarea>
+            <textarea formControlName="taskDescription"></textarea>
         </div>
         <div class="buttons-container">
-            <div class="update-button" [mat-dialog-close]="data" (click)="isNewTaskPopup ? createTask() : updateTask()">{{ "Components.Popup.Buttons.UpdateButtonTitle" | translate }}</div>
-            <div class="cancel-button" (click)="popupClosed()">{{ "Components.Popup.Buttons.CancelButtonTitle" | translate }}</div>
-        </div>
-    </div>
-    <div class="popup-container" *ngSwitchCase="isNewTaskPopup">
-        <div class="popup-title">
-            <p>[ {{ "Components.Popup.Title" | translate }} ]</p>
-        </div>
-        <div class="inputs-container" [formGroup]="taskForm">
-            <label>{{ "Components.Popup.Form.Labels.Name" | translate }}</label>
-            <input class="update-task-name" type="text" formControlName="taskName">
-            <label>{{ "Components.Popup.Form.Labels.Description" | translate }}</label>
-            <textarea class="new-task-description" formControlName="taskDescription"></textarea>
-        </div>
-        <div class="buttons-container">
-            <div class="create-button" [mat-dialog-close]="data" (click)="isNewTaskPopup ? createTask() : updateTask()">{{ "Components.Popup.Buttons.CreateButtonTitle" | translate }}</div>
-            <div class="cancel-button" (click)="popupClosed()">{{ "Components.Popup.Buttons.CancelButtonTitle" | translate }}</div>
+            <div class="update-button" [mat-dialog-close]="data" (click)="isNewTaskPopup ? createTask() : updateTask()">
+                {{ "Components.Popup.UpdateTask.Buttons.Update" | translate }}
+            </div>
+            <div class="cancel-button" (click)="popupClosed()">
+                {{ "Components.Popup.UpdateTask.Buttons.Cancel" | translate }}
+            </div>
         </div>
     </div>
     <div class="popup-container" *ngSwitchCase="isDeletedTaskPopup">
@@ -37,8 +45,12 @@
             <p>{{ "Components.Popup.DeleteTask.SubTitle" | translate }}</p>
         </div>
         <div class="buttons-container">
-            <div class="delete-button" [mat-dialog-close]="data" (click)="deleteTask()">{{ "Components.Popup.DeleteTask.Buttons.Delete" | translate }}</div>
-            <div class="cancel-button" (click)="popupClosed()">{{ "Components.Popup.DeleteTask.Buttons.Cancel" | translate }}</div>
+            <div class="delete-button" [mat-dialog-close]="data" (click)="deleteTask()">
+                {{ "Components.Popup.DeleteTask.Buttons.Delete" | translate }}
+            </div>
+            <div class="cancel-button" (click)="popupClosed()">
+                {{ "Components.Popup.DeleteTask.Buttons.Cancel" | translate }}
+            </div>
         </div>
     </div>
     <div class="popup-container" *ngSwitchCase="isNewProjectPopup">
@@ -46,12 +58,18 @@
             <p>[ {{ "Components.Popup.NewProject.Title" | translate }} ]</p>
         </div>
         <div class="inputs-container" [formGroup]="newProjectForm">
-            <label>{{ "Components.Popup.Form.Labels.Name" | translate }}</label>
-            <input class="update-task-name" type="text" formControlName="projectName">
+            <label>{{ "Components.Popup.NewProject.Labels.ProjectName" | translate }}</label>
+            <input type="text" formControlName="projectName" />
+            <label>{{ "Components.Popup.NewProject.Labels.ProjectDescription" | translate }}</label>
+            <textarea formControlName="projectDescription"></textarea>
         </div>
         <div class="buttons-container">
-            <div class="create-button" [mat-dialog-close]="data" (click)="createProject()">{{ "Components.Popup.NewProject.Buttons.Create" | translate }}</div>
-            <div class="cancel-button" (click)="popupClosed()">{{ "Components.Popup.DeleteTask.Buttons.Cancel" | translate }}</div>
+            <div class="create-button" [mat-dialog-close]="data" (click)="createProject()">
+                {{ "Components.Popup.NewProject.Buttons.Create" | translate }}
+            </div>
+            <div class="cancel-button" (click)="popupClosed()">
+                {{ "Components.Popup.NewProject.Buttons.Cancel" | translate }}
+            </div>
         </div>
     </div>
 </ng-container>

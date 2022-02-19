@@ -20,43 +20,45 @@ import { NewProjectButtonComponent } from './components/new-project-button/new-p
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { TaskComponent } from './components/task/task.component';
 import { PopupComponent } from './components/popup/popup.component';
+import { SettingsComponent } from './pages/settings/settings.component';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
-  return new TranslateHttpLoader(http);
+    return new TranslateHttpLoader(http);
 }
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavbarComponent,
-    HomeComponent,
-    BallComponent,
-    SigninComponent,
-    SignupComponent,
-    NewProjectButtonComponent,
-    DashboardComponent,
-    TaskComponent,
-    PopupComponent,
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    HttpClientModule,
-    TranslateModule.forRoot({
-        loader: {
-            provide: TranslateLoader,
-            useFactory: HttpLoaderFactory,
-            deps: [HttpClient],
-        },
-    }),
-    MatIconModule,
-    DragDropModule,
-    MatDialogModule,
-    FormsModule,
-    ReactiveFormsModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        NavbarComponent,
+        HomeComponent,
+        BallComponent,
+        SigninComponent,
+        SignupComponent,
+        NewProjectButtonComponent,
+        DashboardComponent,
+        TaskComponent,
+        PopupComponent,
+        SettingsComponent,
+    ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        AppRoutingModule,
+        HttpClientModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: HttpLoaderFactory,
+                deps: [HttpClient],
+            },
+        }),
+        MatIconModule,
+        DragDropModule,
+        MatDialogModule,
+        FormsModule,
+        ReactiveFormsModule,
+    ],
+    providers: [],
+    bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
