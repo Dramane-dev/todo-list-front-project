@@ -54,12 +54,14 @@
         justify-content: space-between;
         margin: 5% 2% 2% 2%;
 
-        .update-button, .create-button, .delete-button {
+        .update-button,
+        .create-button,
+        .delete-button {
             padding: 2%;
             text-align: center;
             width: 30%;
             cursor: pointer;
-            background: #77DD77;
+            background: var(--green-pastel);
             border-radius: 5px;
             font-weight: 600;
         }
@@ -69,7 +71,7 @@
             text-align: center;
             width: 30%;
             cursor: pointer;
-            background: #FE6B64;
+            background: var(--red-pastel);
             border-radius: 5px;
             font-weight: 600;
         }

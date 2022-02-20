@@ -98,6 +98,9 @@
                 "TodoTitle": "À faire",
                 "DoingTitle": "En cours",
                 "DoneTitle": "Fait"
+            },
+            "Buttons": {
+                "Delete": "Supprimer le projet"
             }
         },
         "Settings": {
