@@ -64,6 +64,7 @@
             "Title": "S'inscrire.",
             "Fields": {
                 "Name": "Nom",
+                "FirstName": "Prénom",
                 "Email": "Email",
                 "Password": "Mot de passe"
             },
