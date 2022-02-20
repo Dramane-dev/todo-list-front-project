@@ -109,7 +109,7 @@
                 "SubTitle": "Mettez à jour votre photo et vos informations personnels"
             },
             "FieldsSection": {
-                "UserName": "Nom",
+                "UserLastName": "Nom",
                 "UserFirstName": "Prénom",
                 "Email": "Email",
                 "Password": "Mot de passe",
