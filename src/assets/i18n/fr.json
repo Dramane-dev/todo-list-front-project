@@ -99,6 +99,24 @@
                 "DoingTitle": "En cours",
                 "DoneTitle": "Fait"
             }
+        },
+        "Settings": {
+            "ProfileHeaderSection": {
+                "Title": "Profile",
+                "SubTitle": "Mettez à jour votre photo et vos informations personnels"
+            },
+            "FieldsSection": {
+                "UserName": "Nom",
+                "UserFirstName": "Prénom",
+                "Email": "Email",
+                "Password": "Mot de passe",
+                "Bio": "Biographie"
+            },
+            "Buttons": {
+                "Save": "Sauvegarder",
+                "Delete": "Supprimer l'image",
+                "Cancel": "Annuler"
+            }
         }
     }
 }

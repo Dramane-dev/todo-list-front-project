@@ -1,41 +1,54 @@
+<ng-container class="file-input">
+    <input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload />
+</ng-container>
 <div class="container">
     <div class="banner-container"></div>
     <div class="profile-container">
-        <div class="user-pixe">
-            <img src="../../../assets/images/user-image.png" alt="user image" />
+        <div class="user-pixe" (click)="fileUpload.click()">
+            <img class="user-profile-img" [src]="fileUrl" alt="user image" />
         </div>
         <div class="profile-content">
-            <div class="profile-title">Profile</div>
-            <div class="profile-description">Update your photo and personnal details.</div>
+            <div class="profile-title">{{ "Pages.Settings.ProfileHeaderSection.Title" | translate }}</div>
+            <div class="profile-description">{{ "Pages.Settings.ProfileHeaderSection.SubTitle" | translate }}</div>
+        </div>
+        <div class="buttons-container">
+            <div class="delete-img-button" (click)="deleteUserImageFromStorage()">
+                {{ "Pages.Settings.Buttons.Delete" | translate }}
+            </div>
         </div>
     </div>
     <div class="update-profile-container">
         <div class="fields-container">
             <div class="username-container">
-                <label>Username</label>
+                <label>{{ "Pages.Settings.FieldsSection.UserName" | translate }}</label>
+                <input type="text" />
+            </div>
+            <div class="separator"></div>
+            <div class="userlastname-container">
+                <label>{{ "Pages.Settings.FieldsSection.UserFirstName" | translate }}</label>
                 <input type="text" />
             </div>
             <div class="separator"></div>
             <div class="username-container">
-                <label>Email</label>
+                <label>{{ "Pages.Settings.FieldsSection.Email" | translate }}</label>
                 <input type="text" />
             </div>
             <div class="separator"></div>
             <div class="username-container">
-                <label>Password</label>
+                <label>{{ "Pages.Settings.FieldsSection.Password" | translate }}</label>
                 <input type="text" />
             </div>
             <div class="separator"></div>
             <div class="separator"></div>
             <div class="username-container">
-                <label>Bio</label>
+                <label>{{ "Pages.Settings.FieldsSection.Bio" | translate }}</label>
                 <textarea></textarea>
             </div>
             <div class="separator"></div>
         </div>
         <div class="buttons-container">
-            <div class="save-button">Save</div>
-            <div class="cancel-button">Cancel</div>
+            <div class="save-button">{{ "Pages.Settings.Buttons.Save" | translate }}</div>
+            <div class="cancel-button">{{ "Pages.Settings.Buttons.Cancel" | translate }}</div>
         </div>
     </div>
 </div>

@@ -1,3 +1,7 @@
+.file-input {
+    display: none;
+}
+
 .container {
     display: flex;
     flex-direction: column;
@@ -15,7 +19,6 @@
     .profile-container {
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
         width: 90%;
         height: 100px;
         margin: 0 auto 0 auto;
@@ -25,7 +28,7 @@
             display: flex;
             flex-direction: row;
             justify-content: center;
-            border: 2px solid var(--white);
+            border: 1px solid var(--white);
             height: 150px;
             width: 150px;
             border-radius: 50%;
@@ -37,18 +40,43 @@
 
             img {
                 margin: auto 0 auto 0;
-                height: 90px;
+                // height: 90px;
+                height: 150px;
+                width: 150px;
+                border-radius: 50%;
             }
         }
 
         .profile-content {
             margin: auto 0 auto 20%;
             color: var(--white);
+            width: 40%;
 
             .profile-title {
                 font-size: 30px;
                 font-weight: 700;
                 margin-bottom: 3.5%;
+            }
+        }
+
+        .buttons-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            margin: auto auto auto auto;
+            color: var(--white);
+            width: 45%;
+            text-align: center;
+            align-items: center;
+
+            .delete-img-button {
+                padding: 2%;
+                text-align: center;
+                width: 40%;
+                cursor: pointer;
+                background: var(--red-pastel);
+                border-radius: 5px;
+                font-weight: 600;
             }
         }
     }
@@ -70,7 +98,8 @@
                 border: 0.5px solid var(--white);
             }
 
-            .username-container {
+            .username-container,
+            .userlastname-container {
                 display: flex;
                 flex-direction: row;
                 justify-content: space-between;
