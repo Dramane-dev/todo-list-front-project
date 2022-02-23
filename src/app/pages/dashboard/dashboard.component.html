@@ -28,7 +28,10 @@
             </div>
         </div>
         <div class="project-description-container">
-            <p>Project description</p>
+            <p>
+                Project description Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo, officiis numquam?
+                Culpa voluptatem veritatis sequi.
+            </p>
         </div>
         <div class="todos-list-container">
             <div class="todo-list-wrapper">
@@ -52,6 +55,8 @@
                             <ng-container *ngFor="let task of todos">
                                 <app-task
                                     cdkDrag
+                                    [class.grab]="grab"
+                                    [class.grabbing]="grabbing"
                                     mat-raised-button
                                     [taskName]="task"
                                     (isDeletedButton)="setDeletedButton($event)"
@@ -87,6 +92,8 @@
                             <ng-container *ngFor="let doingTask of doing">
                                 <app-task
                                     cdkDrag
+                                    [class.grab]="grab"
+                                    [class.grabbing]="grabbing"
                                     [taskName]="doingTask"
                                     (isDeletedButton)="setDeletedButton($event)"
                                     (click)="
@@ -121,6 +128,8 @@
                             <ng-container *ngFor="let doneTask of done">
                                 <app-task
                                     cdkDrag
+                                    [class.grab]="grab"
+                                    [class.grabbing]="grabbing"
                                     [taskName]="doneTask"
                                     (isDeletedButton)="setDeletedButton($event)"
                                     (click)="

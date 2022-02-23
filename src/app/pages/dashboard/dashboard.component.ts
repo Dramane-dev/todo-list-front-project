@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { MatDialog } from '@angular/material/dialog';
 import { PopupComponent } from 'src/app/components/popup/popup.component';
@@ -16,6 +16,8 @@ export class DashboardComponent implements OnInit {
     public projects: string[] = ['Projet 1', 'Projet 2', 'Projet 3', 'Projet 4', 'projet 5'];
     public projectName: string = "Développement de l'appli todo list";
     public isDeletedButton: boolean = false;
+    @Input() grab: boolean = true;
+    @Input() grabbing: boolean = false;
 
     constructor(public dialog: MatDialog, private _router: Router) {}
 

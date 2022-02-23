@@ -6,6 +6,7 @@ import { SigninComponent } from './pages/auth/signin/signin.component';
 import { SignupComponent } from './pages/auth/signup/signup.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { SettingsComponent } from './pages/settings/settings.component';
+import { ConfirmedMailComponent } from './pages/confirmed-mail/confirmed-mail.component';
 
 const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -14,6 +15,7 @@ const routes: Routes = [
     { path: 'signup', component: SignupComponent },
     { path: 'dashboard', component: DashboardComponent },
     { path: 'settings', component: SettingsComponent },
+    { path: 'confirmed-mail', component: ConfirmedMailComponent },
 ];
 
 @NgModule({

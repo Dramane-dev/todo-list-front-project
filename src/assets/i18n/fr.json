@@ -121,6 +121,14 @@
                 "Delete": "Supprimer l'image",
                 "Cancel": "Annuler"
             }
+        },
+        "ConfirmedMail": {
+            "Title": "Vérifiez votre Email.",
+            "SubTitle": "Nous venons de vous envoyer un code de vérification par mail. Veuillez le saisir dans le champ puis cliquez sur \"vérifier\"",
+            "Placeholder": "Saisir le code",
+            "Buttons": {
+                "Verify": "Vérifier"
+            }
         }
     }
 }

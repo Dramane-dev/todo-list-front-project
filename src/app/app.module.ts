@@ -21,6 +21,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { TaskComponent } from './components/task/task.component';
 import { PopupComponent } from './components/popup/popup.component';
 import { SettingsComponent } from './pages/settings/settings.component';
+import { ConfirmedMailComponent } from './pages/confirmed-mail/confirmed-mail.component';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     return new TranslateHttpLoader(http);
@@ -39,6 +40,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
         TaskComponent,
         PopupComponent,
         SettingsComponent,
+        ConfirmedMailComponent,
     ],
     imports: [
         BrowserModule,

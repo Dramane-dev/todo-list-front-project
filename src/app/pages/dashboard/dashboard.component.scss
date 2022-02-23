@@ -4,7 +4,7 @@
 
     .projects-column-container {
         height: fit-content;
-        border: 1px solid var(--white);
+        // border: 1px solid var(--white);
         padding: 2%;
 
         .projects-title-container {
@@ -24,7 +24,7 @@
 
     .todos-column-container {
         height: fit-content;
-        border: 1px solid var(--white);
+        // border: 1px solid var(--white);
 
         .project-title-container {
             display: flex;
@@ -59,7 +59,7 @@
         }
 
         .project-description-container {
-            border: 1px solid var(--white);
+            // border: 1px solid var(--white);
             color: var(--white);
             margin-left: 2%;
             margin-right: 30%;
@@ -70,7 +70,7 @@
     .todos-list-container {
         display: flex;
         justify-content: space-around;
-        border: 1px solid var(--white);
+        // border: 1px solid var(--white);
 
         .todo-list-wrapper {
             display: flex;
@@ -110,5 +110,10 @@
 
     .tasks-container {
         flex-grow: 1;
+        cursor: grab;
+    }
+
+    .tasks-container:active {
+        cursor: grabbing;
     }
 }
