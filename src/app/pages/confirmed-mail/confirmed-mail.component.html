@@ -1,7 +1,9 @@
 <div class="container">
     <div class="title-container">
-        <p>{{ "Pages.ConfirmedMail.Title" | translate }}</p>
-        <p>{{ "Pages.ConfirmedMail.SubTitle" | translate }}</p>
+        <div class="sub-container-title">
+            <p class="title">{{ "Pages.ConfirmedMail.Title" | translate }}</p>
+            <p class="subTitle">{{ "Pages.ConfirmedMail.SubTitle" | translate }}</p>
+        </div>
     </div>
 
     <div class="form-container">
@@ -10,6 +12,6 @@
     </div>
 
     <div class="button-container">
-        <div class="verifiy-button">{{ "Pages.ConfirmedMail.Buttons.Verify" | translate }}</div>
+        <app-button [simpleButton]="true"></app-button>
     </div>
 </div>

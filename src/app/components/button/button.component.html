@@ -23,4 +23,9 @@
             <p>{{ "Components.NewProjectButton.Settings" | translate }}</p>
         </div>
     </ng-container>
+    <ng-container *ngSwitchCase="simpleButton">
+        <div [class.simpleButton]="simpleButton">
+            <p>{{ "Pages.ConfirmedMail.Buttons.Verify" | translate }}</p>
+        </div>
+    </ng-container>
 </ng-container>

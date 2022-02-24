@@ -2,4 +2,58 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    margin-top: 3%;
+
+    .title-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin: 0 0 5% 0;
+
+        .sub-container-title {
+            width: 30%;
+
+            .title {
+                text-align: center;
+                font-weight: 700;
+                font-size: 30px;
+                color: var(--white);
+                margin-bottom: 20%;
+            }
+
+            .subTitle {
+                color: var(--white);
+                text-align: center;
+                font-weight: 600;
+            }
+        }
+    }
+
+    .form-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin: 0 0 2% 0;
+
+        input {
+            padding: 1.5%;
+            background: none;
+            border: none;
+            outline: none;
+            color: var(--white);
+            height: 10px;
+            width: 30%;
+            border: 2px solid var(--border-input-color);
+            border-radius: 10px;
+            font-size: medium;
+        }
+
+        input:hover {
+            border: 2px solid var(--pink-navbar-item-border);
+        }
+
+        input:focus {
+            border: 2px solid var(--pink-navbar-item-border);
+        }
+    }
 }

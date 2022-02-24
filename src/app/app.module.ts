@@ -16,7 +16,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { BallComponent } from './components/ball/ball.component';
 import { SigninComponent } from './pages/auth/signin/signin.component';
 import { SignupComponent } from './pages/auth/signup/signup.component';
-import { NewProjectButtonComponent } from './components/new-project-button/new-project-button.component';
+import { ButtonComponent } from './components/button/button.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { TaskComponent } from './components/task/task.component';
 import { PopupComponent } from './components/popup/popup.component';
@@ -35,7 +35,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
         BallComponent,
         SigninComponent,
         SignupComponent,
-        NewProjectButtonComponent,
+        ButtonComponent,
         DashboardComponent,
         TaskComponent,
         PopupComponent,
