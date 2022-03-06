@@ -1,7 +1,7 @@
 {
     "Components": {
         "Navbar": {
-            "Title": "Todo List",
+            "Title": "Simply Todo",
             "Signin": "Se connecter",
             "Signup": "S'inscrire"
         },
@@ -66,13 +66,21 @@
                 "Name": "Nom",
                 "FirstName": "Prénom",
                 "Email": "Email",
-                "Password": "Mot de passe"
+                "Password": "Mot de passe",
+                "ConfirmedPassword": "Confirmer votre mot de passe"
+            },
+            "FieldsError": {
+                "IsNotSamePassword": "Mots de passe non identique !",
+                "AllFieldsRequired": "Tous les champs sont requis pour vous inscrire !"
             },
             "AlreadyAccount": "Vous possédez déjà un compte ?",
             "Buttons": {
                 "Signup": "S'inscrire",
                 "Signin": "Se connecter",
                 "BackToHome": "Revenir sur l'écran d'acceuil"
+            },
+            "RequestErrors": {
+                "EmailMustBeUnique": "Vous possédez déjà un compte avec cette email !"
             }
         },
         "Signin": {

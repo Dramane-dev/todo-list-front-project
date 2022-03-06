@@ -15,7 +15,7 @@ const routes: Routes = [
     { path: 'signup', component: SignupComponent },
     { path: 'dashboard', component: DashboardComponent },
     { path: 'settings', component: SettingsComponent },
-    { path: 'confirmed-mail', component: ConfirmedMailComponent },
+    { path: 'confirmed-mail/:id', component: ConfirmedMailComponent },
 ];
 
 @NgModule({

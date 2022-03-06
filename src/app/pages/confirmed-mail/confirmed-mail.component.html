@@ -6,12 +6,19 @@
         </div>
     </div>
 
-    <div class="form-container">
+    <div class="form-container" [formGroup]="mailCodeVerificationForm">
         <label>{{ "" | translate }}</label>
-        <input type="text" placeholder="{{ 'Pages.ConfirmedMail.Placeholder' | translate }}" />
+        <input
+            formControlName="mailCodeVerification"
+            type="text"
+            placeholder="{{ 'Pages.ConfirmedMail.Placeholder' | translate }}"
+        />
+        <ng-container *ngIf="invalidCode">
+            <p class="error-message">{{ "Pages.Signup.FieldsError.IsNotSamePassword" | translate }}</p>
+        </ng-container>
     </div>
 
     <div class="button-container">
-        <app-button [simpleButton]="true"></app-button>
+        <app-button [simpleButton]="true" (click)="confirmedMail()"></app-button>
     </div>
 </div>

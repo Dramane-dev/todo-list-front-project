@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class SettingsComponent implements OnInit {
     public fileUrl: string = '../../../assets/images/user-image.png';
 
+    private _storage: Storage = window.localStorage;
+
     constructor() {}
 
     ngOnInit(): void {
@@ -32,23 +34,19 @@ export class SettingsComponent implements OnInit {
     }
 
     saveUserImageToLocalStorage(imgPath: string): void {
-        let storage: Storage = window.localStorage;
-        storage.setItem('user-profile-image', imgPath);
+        this._storage.setItem('user-profile-image', imgPath);
     }
 
     checkUserImage(): boolean {
-        let storage: Storage = window.localStorage;
-        return storage.getItem('user-profile-image') !== null;
+        return this._storage.getItem('user-profile-image') !== null;
     }
 
     getUserImageFromStorage(): string {
-        let storage: Storage = window.localStorage;
-        return storage.getItem('user-profile-image') as string;
+        return this._storage.getItem('user-profile-image') as string;
     }
 
     deleteUserImageFromStorage(): void {
-        let storage: Storage = window.localStorage;
-        storage.removeItem('user-profile-image');
+        this._storage.removeItem('user-profile-image');
         this.resetUserImage();
     }
 

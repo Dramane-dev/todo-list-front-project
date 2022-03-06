@@ -6,12 +6,34 @@
         <h1>{{ "Pages.Signup.Title" | translate }}</h1>
     </div>
     <div class="form-container">
-        <form class="form">
-            <input type="text" [placeholder]="'Pages.Signup.Fields.Name' | translate" />
-            <input type="text" [placeholder]="'Pages.Signup.Fields.FirstName' | translate" />
-            <input type="email" [placeholder]="'Pages.Signup.Fields.Email' | translate" />
-            <input type="password" [placeholder]="'Pages.Signup.Fields.Password' | translate" />
-            <div class="signup-button">
+        <form class="form" [formGroup]="signupForm">
+            <input type="text" formControlName="lastname" [placeholder]="'Pages.Signup.Fields.Name' | translate" />
+            <input
+                type="text"
+                formControlName="firstname"
+                [placeholder]="'Pages.Signup.Fields.FirstName' | translate"
+            />
+            <input type="email" formControlName="email" [placeholder]="'Pages.Signup.Fields.Email' | translate" />
+            <input
+                type="password"
+                formControlName="password"
+                [placeholder]="'Pages.Signup.Fields.Password' | translate"
+            />
+            <input
+                type="password"
+                formControlName="confirmedPassword"
+                [placeholder]="'Pages.Signup.Fields.ConfirmedPassword' | translate"
+            />
+            <ng-container *ngIf="isNotSamePassword">
+                <p class="error-message">{{ "Pages.Signup.FieldsError.IsNotSamePassword" | translate }}</p>
+            </ng-container>
+            <ng-container *ngIf="allFieldsAreRequired">
+                <p class="error-message">{{ "Pages.Signup.FieldsError.AllFieldsRequired" | translate }}</p>
+            </ng-container>
+            <ng-container *ngIf="emailMustBeUnique">
+                <p class="error-message">{{ "Pages.Signup.RequestErrors.EmailMustBeUnique" | translate }}</p>
+            </ng-container>
+            <div class="signup-button" (click)="signup()">
                 <p>{{ "Pages.Signup.Buttons.Signup" | translate }}</p>
             </div>
         </form>

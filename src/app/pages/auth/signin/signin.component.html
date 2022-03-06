@@ -1,18 +1,19 @@
 <div class="container">
     <ng-container *ngFor="let ball of balls">
-        <app-ball
-            [topLeft]="ball.property === 'topLeft'"
-            [topRight]="ball.property === 'topRight'"
-        ></app-ball>
+        <app-ball [topLeft]="ball.property === 'topLeft'" [topRight]="ball.property === 'topRight'"></app-ball>
     </ng-container>
     <div class="title-container">
         <h1>{{ "Pages.Signin.Title" | translate }}</h1>
     </div>
     <div class="form-container">
-        <form class="form">
-            <input type="email" [placeholder]="'Pages.Signin.Fields.Email' | translate">
-            <input type="password" [placeholder]="'Pages.Signin.Fields.Password' | translate">
-            <div class="signup-button">
+        <form class="form" [formGroup]="signinForm">
+            <input formControlName="email" type="email" [placeholder]="'Pages.Signin.Fields.Email' | translate" />
+            <input
+                formControlName="password"
+                type="password"
+                [placeholder]="'Pages.Signin.Fields.Password' | translate"
+            />
+            <div class="signin-button" (click)="signin()">
                 <p>{{ "Pages.Signin.Buttons.Signin" | translate }}</p>
             </div>
         </form>
