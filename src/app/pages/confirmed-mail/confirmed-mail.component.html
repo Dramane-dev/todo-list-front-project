@@ -14,7 +14,7 @@
             placeholder="{{ 'Pages.ConfirmedMail.Placeholder' | translate }}"
         />
         <ng-container *ngIf="invalidCode">
-            <p class="error-message">{{ "Pages.Signup.FieldsError.IsNotSamePassword" | translate }}</p>
+            <p [class.error-message]="invalidCode">{{ "Pages.Signup.FieldsError.IsNotSamePassword" | translate }}</p>
         </ng-container>
     </div>
 

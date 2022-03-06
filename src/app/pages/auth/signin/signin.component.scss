@@ -41,6 +41,10 @@
             input:focus {
                 border: 2px solid var(--pink-navbar-item-border);
             }
+
+            .error-message {
+                color: var(--red-pastel);
+            }
         }
     }
 

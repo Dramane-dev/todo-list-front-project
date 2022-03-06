@@ -89,6 +89,9 @@
                 "Email": "Email",
                 "Password": "Mot de passe"
             },
+            "FieldsErrors": {
+                "isInvalidInformation": "Votre email ou mot de passe est incorrect !"
+            },
             "AlreadyAccount": "Vous ne possédez pas de compte ?",
             "Buttons": {
                 "Signup": "S'inscrire",

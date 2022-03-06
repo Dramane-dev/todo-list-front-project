@@ -64,6 +64,8 @@ export class SigninComponent implements OnInit {
                 .catch((error) => {
                     this.isInvalidInformation = true;
                 });
+        } else {
+            this.isInvalidInformation = true;
         }
     }
 

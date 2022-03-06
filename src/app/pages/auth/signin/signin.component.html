@@ -13,6 +13,11 @@
                 type="password"
                 [placeholder]="'Pages.Signin.Fields.Password' | translate"
             />
+            <ng-container *ngIf="isInvalidInformation">
+                <p [class.error-message]="isInvalidInformation">
+                    {{ "Pages.Signin.FieldsErrors.isInvalidInformation" | translate }}
+                </p>
+            </ng-container>
             <div class="signin-button" (click)="signin()">
                 <p>{{ "Pages.Signin.Buttons.Signin" | translate }}</p>
             </div>

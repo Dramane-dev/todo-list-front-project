@@ -25,13 +25,19 @@
                 [placeholder]="'Pages.Signup.Fields.ConfirmedPassword' | translate"
             />
             <ng-container *ngIf="isNotSamePassword">
-                <p class="error-message">{{ "Pages.Signup.FieldsError.IsNotSamePassword" | translate }}</p>
+                <p [class.error-message]="isNotSamePassword">
+                    {{ "Pages.Signup.FieldsError.IsNotSamePassword" | translate }}
+                </p>
             </ng-container>
             <ng-container *ngIf="allFieldsAreRequired">
-                <p class="error-message">{{ "Pages.Signup.FieldsError.AllFieldsRequired" | translate }}</p>
+                <p [class.error-message]="allFieldsAreRequired">
+                    {{ "Pages.Signup.FieldsError.AllFieldsRequired" | translate }}
+                </p>
             </ng-container>
             <ng-container *ngIf="emailMustBeUnique">
-                <p class="error-message">{{ "Pages.Signup.RequestErrors.EmailMustBeUnique" | translate }}</p>
+                <p [class.error-message]="emailMustBeUnique">
+                    {{ "Pages.Signup.RequestErrors.EmailMustBeUnique" | translate }}
+                </p>
             </ng-container>
             <div class="signup-button" (click)="signup()">
                 <p>{{ "Pages.Signup.Buttons.Signup" | translate }}</p>
