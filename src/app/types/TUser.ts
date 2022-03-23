@@ -7,4 +7,5 @@ export type TUser = {
     mailConfirmed: boolean;
     mailVerificationCode: string;
     accessToken: string;
+    isAuthenticated: boolean;
 };

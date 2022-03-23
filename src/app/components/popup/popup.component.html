@@ -24,9 +24,9 @@
         </div>
         <div class="inputs-container" [formGroup]="taskForm">
             <label>{{ "Components.Popup.Form.Labels.Name" | translate }}</label>
-            <input type="text" formControlName="taskName" />
+            <input type="text" formControlName="taskName" [value]="this.data.taskName" />
             <label>{{ "Components.Popup.Form.Labels.Description" | translate }}</label>
-            <textarea formControlName="taskDescription"></textarea>
+            <textarea formControlName="taskDescription" [value]="this.data.taskDescription"></textarea>
         </div>
         <div class="buttons-container">
             <div class="update-button" [mat-dialog-close]="data" (click)="isNewTaskPopup ? createTask() : updateTask()">
@@ -57,7 +57,7 @@
         <div class="popup-title">
             <p>[ {{ "Components.Popup.NewProject.Title" | translate }} ]</p>
         </div>
-        <div class="inputs-container" [formGroup]="newProjectForm">
+        <div class="inputs-container" [formGroup]="projectForm">
             <label>{{ "Components.Popup.NewProject.Labels.ProjectName" | translate }}</label>
             <input type="text" formControlName="projectName" />
             <label>{{ "Components.Popup.NewProject.Labels.ProjectDescription" | translate }}</label>
@@ -69,6 +69,25 @@
             </div>
             <div class="cancel-button" (click)="popupClosed()">
                 {{ "Components.Popup.NewProject.Buttons.Cancel" | translate }}
+            </div>
+        </div>
+    </div>
+    <div class="popup-container" *ngSwitchCase="isUpdateProjectPopup">
+        <div class="popup-title">
+            <p>[ {{ "Components.Popup.UpdateProject.Title" | translate }} ]</p>
+        </div>
+        <div class="inputs-container" [formGroup]="projectForm">
+            <label>{{ "Components.Popup.UpdateProject.Labels.ProjectName" | translate }}</label>
+            <input type="text" formControlName="projectName" />
+            <label>{{ "Components.Popup.UpdateProject.Labels.ProjectDescription" | translate }}</label>
+            <textarea formControlName="projectDescription"></textarea>
+        </div>
+        <div class="buttons-container">
+            <div class="create-button" [mat-dialog-close]="data" (click)="updateProject()">
+                {{ "Components.Popup.UpdateProject.Buttons.Create" | translate }}
+            </div>
+            <div class="cancel-button" (click)="popupClosed()">
+                {{ "Components.Popup.UpdateProject.Buttons.Cancel" | translate }}
             </div>
         </div>
     </div>

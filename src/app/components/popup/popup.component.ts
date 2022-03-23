@@ -1,6 +1,9 @@
-import { Component, Inject, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormGroup, FormControl } from '@angular/forms';
+import { ProjectService } from 'src/app/services/project/project.service';
+import { IDataPopup } from 'src/app/interfaces/IPopupDatas';
+import { IProject } from 'src/app/interfaces/IProject';
 
 @Component({
     selector: 'app-popup',
@@ -12,20 +15,27 @@ export class PopupComponent implements OnInit {
     public isNewTaskPopup: boolean = false;
     public isDeletedTaskPopup: boolean = false;
     public isNewProjectPopup: boolean = false;
+    public isUpdateProjectPopup: boolean = false;
     public taskName: string = '';
     public taskDescription: string = '';
+    public projectName: string = '';
 
     taskForm: FormGroup = new FormGroup({
         taskName: new FormControl(''),
         taskDescription: new FormControl(''),
     });
 
-    newProjectForm: FormGroup = new FormGroup({
+    projectForm: FormGroup = new FormGroup({
         projectName: new FormControl(''),
         projectDescription: new FormControl(''),
     });
 
-    constructor(public popupRef: MatDialogRef<PopupComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {}
+    constructor(
+        public popupRef: MatDialogRef<PopupComponent>,
+        @Inject(MAT_DIALOG_DATA)
+        public data: IDataPopup,
+        private _projectService: ProjectService
+    ) {}
 
     ngOnInit(): void {
         this.initBooleanView();
@@ -36,6 +46,10 @@ export class PopupComponent implements OnInit {
         this.isUpdateTaskPopup = this.data.isUpdateTaskPopup;
         this.isDeletedTaskPopup = this.data.isDeletedTaskPopup;
         this.isNewProjectPopup = this.data.isNewProjectPopup;
+        this.isUpdateProjectPopup = this.data.isUpdateProjectPopup;
+        this.projectName = this.data.projectName;
+        this.taskForm.get('taskName')?.setValue(this.data.taskName);
+        this.taskForm.get('taskDescription')?.setValue(this.data.taskDescription);
     }
 
     popupClosed(): void {
@@ -43,13 +57,15 @@ export class PopupComponent implements OnInit {
     }
 
     createTask(): void {
-        this.data.taskName = this.taskForm.value.taskName;
-        this.data.taskDescription = this.taskForm.value.taskDescription;
+        const { taskName, taskDescription } = this.projectForm.controls;
+        this.data.taskName = taskName.value;
+        this.data.taskDescription = taskDescription.value;
     }
 
     updateTask(): void {
-        this.data.taskName = this.taskForm.value.taskName;
-        this.data.taskDescription = this.taskForm.value.taskDescription;
+        const { taskName, taskDescription } = this.projectForm.controls;
+        this.data.taskName = taskName.value;
+        this.data.taskDescription = taskDescription.value;
     }
 
     deleteTask(): void {
@@ -57,7 +73,37 @@ export class PopupComponent implements OnInit {
     }
 
     createProject(): void {
-        this.data.projectName = this.newProjectForm.value.projectName;
-        this.data.projectDescription = this.newProjectForm.value.projectDescription;
+        const { projectName, projectDescription } = this.projectForm.controls;
+
+        console.log(projectName.value);
+        console.log(projectDescription.value);
+
+        if (this.projectForm.valid) {
+            this._projectService
+                .createProject(
+                    {
+                        name: projectName.value,
+                        description: projectDescription.value,
+                    },
+                    this.data.user.accessToken,
+                    String(this.data.user.userId)
+                )
+                .then((res) => {
+                    console.log(res);
+                    // this.newProject.emit(true);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+
+            this.data.projectName = projectName.value;
+            this.data.projectDescription = projectDescription.value;
+        }
+    }
+
+    updateProject(): void {
+        const { projectName, projectDescription } = this.projectForm.controls;
+        this.data.projectName = projectName.value;
+        this.data.projectDescription = projectDescription.value;
     }
 }

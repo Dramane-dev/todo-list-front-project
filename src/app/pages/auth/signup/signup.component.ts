@@ -40,8 +40,6 @@ export class SignupComponent implements OnInit {
     public allFieldsAreRequired: boolean = false;
     public emailMustBeUnique: boolean = false;
 
-    private _storage: Storage = window.localStorage;
-
     constructor(private _router: Router, private _authService: AuthService, private _storageService: StorageService) {}
 
     ngOnInit(): void {}

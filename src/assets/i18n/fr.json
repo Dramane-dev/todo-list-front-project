@@ -3,7 +3,8 @@
         "Navbar": {
             "Title": "Simply Todo",
             "Signin": "Se connecter",
-            "Signup": "S'inscrire"
+            "Signup": "S'inscrire",
+            "Signout": "Déconnexion"
         },
         "NewProjectButton": {
             "Title": "Nouveau projet",
@@ -40,6 +41,17 @@
                 },
                 "Buttons": {
                     "Create": "Créer",
+                    "Cancel": "Annuler"
+                }
+            },
+            "UpdateProject": {
+                "Title": "Mettre à jour le projet",
+                "Labels": {
+                    "ProjectName": "Nom du projet",
+                    "ProjectDescription": "Description du projet"
+                },
+                "Buttons": {
+                    "Create": "Mettre à jour",
                     "Cancel": "Annuler"
                 }
             },
@@ -112,6 +124,7 @@
                 "DoneTitle": "Fait"
             },
             "Buttons": {
+                "Update": "Mettre à jour le projet",
                 "Delete": "Supprimer le projet"
             }
         },
@@ -137,6 +150,9 @@
             "Title": "Vérifiez votre Email 📩",
             "SubTitle": "Nous venons de vous envoyer un code de vérification par mail. Veuillez le saisir dans le champ puis cliquez sur \"vérifier\"",
             "Placeholder": "Saisir le code",
+            "FieldsErrors": {
+                "IsInvalidCode": "Votre code est invalide ❌ ! S'il vous plaît, vérifiez votre email."
+            },
             "Buttons": {
                 "Verify": "Vérifier"
             }

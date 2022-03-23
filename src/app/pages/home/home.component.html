@@ -1,5 +1,5 @@
 <section class="banner-container">
-    <ng-container *ngFor="let ball of balls;">
+    <ng-container *ngFor="let ball of balls">
         <app-ball
             [topLeft]="ball.property === 'topLeft'"
             [topRight]="ball.property === 'topRight'"
@@ -7,16 +7,16 @@
             [bottomRight]="ball.property === 'bottomRight'"
         ></app-ball>
     </ng-container>
-    <h1 class="banner-title">{{ "Pages.Home.Title" | translate  }}</h1>
+    <h1 class="banner-title">{{ "Pages.Home.Title" | translate }}</h1>
     <div class="banner-subtitle">
-        <p>{{ "Pages.Home.SubTitle" | translate  }}</p>
+        <p>{{ "Pages.Home.SubTitle" | translate }}</p>
     </div>
     <div class="buttons-container">
-        <div class="get-started-button" (click)="navigateTo('/signin')">
-            <p class="content">{{ "Pages.Home.Buttons.GetStartedButton" | translate  }}</p>
+        <div class="get-started-button" (click)="userIsLogged() ? navigateTo('/dashboard') : navigateTo('/signin')">
+            <p class="content">{{ "Pages.Home.Buttons.GetStartedButton" | translate }}</p>
         </div>
         <div class="learn-more-button">
-            <p class="content">{{ "Pages.Home.Buttons.LearnMoreButton" | translate  }}</p>
+            <p class="content">{{ "Pages.Home.Buttons.LearnMoreButton" | translate }}</p>
         </div>
     </div>
 </section>

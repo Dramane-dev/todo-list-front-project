@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup, FormControl, Validators, ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TUserCredential } from 'src/app/types/TUserCredential';
 import { TUser } from 'src/app/types/TUser';
 import { AuthService } from 'src/app/services/auth/auth.service';
@@ -48,18 +48,18 @@ export class SigninComponent implements OnInit {
             this._authService
                 .signin(userCredentials)
                 .then(async (res) => {
-                    const { accessToken } = res.user;
+                    const { accessToken, isAuthenticated } = res.user;
                     let actualUser: TUser = JSON.parse(
                         await this._storageService.getFromLocalStorage('userInformations')
                     );
                     actualUser.accessToken = accessToken;
+                    actualUser.isAuthenticated = isAuthenticated;
                     let actualUserStringified: string = JSON.stringify(actualUser);
                     this._storageService
                         .updateFromLocalStorage('userInformations', actualUserStringified)
                         .then((res) => {
                             this.navigateTo('dashboard');
                         });
-                    console.log(res);
                 })
                 .catch((error) => {
                     this.isInvalidInformation = true;

@@ -14,7 +14,7 @@
 
             .assignment-icon {
                 justify-content: flex-start;
-                margin: 12px 10px 0 10px;
+                margin: 12px 10px 0 20px;
                 font-weight: 600;
                 font-size: 30px;
                 margin-right: 5%;
@@ -24,7 +24,6 @@
 
     .todos-column-container {
         height: fit-content;
-        // border: 1px solid var(--white);
 
         .project-title-container {
             display: flex;
@@ -44,17 +43,58 @@
         .button-container {
             display: flex;
             flex-direction: row-reverse;
+            align-items: center;
             margin-right: 2%;
 
-            .delete-project-button {
-                width: 20%;
-                padding: 1%;
-                text-align: center;
-                cursor: pointer;
-                background-color: var(--red-pastel);
-                border-radius: 5px;
-                font-weight: 600;
+            .buttons {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                margin-right: 2%;
+
+                .delete-project-button {
+                    width: 100%;
+                    padding: 7%;
+                    text-align: center;
+                    cursor: pointer;
+                    background-color: var(--red-pastel);
+                    border-radius: 5px;
+                    font-weight: 600;
+                    color: var(--white);
+                    margin: 10%;
+                }
+
+                .update-project-button {
+                    width: 100%;
+                    padding: 7%;
+                    text-align: center;
+                    cursor: pointer;
+                    background-color: var(--caramel-pastel);
+                    border-radius: 5px;
+                    font-weight: 600;
+                    color: var(--dark-body-color);
+                    margin: 10%;
+                }
+            }
+
+            .user-informations-container-2 {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                margin-bottom: 3%;
                 color: var(--white);
+                width: 77%;
+
+                .user-identity {
+                    font-size: 25px;
+                }
+
+                .how-to-reg-icon {
+                    margin-right: 10px;
+                    font-weight: 600;
+                    font-size: 30px;
+                }
             }
         }
 

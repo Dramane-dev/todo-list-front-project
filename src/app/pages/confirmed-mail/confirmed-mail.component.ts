@@ -13,7 +13,7 @@ import { switchMap } from 'rxjs/operators';
     templateUrl: './confirmed-mail.component.html',
     styleUrls: ['./confirmed-mail.component.scss'],
 })
-export class ConfirmedMailComponent implements OnInit {
+export class ConfirmedMailComponent implements OnInit, OnDestroy {
     public userId: number = 0;
     public mailCodeVerificationForm: FormGroup = new FormGroup({
         mailCodeVerification: new FormControl(
@@ -54,6 +54,7 @@ export class ConfirmedMailComponent implements OnInit {
                 })
                 .catch((error) => {
                     console.log(error);
+                    this.invalidCode = true;
                 });
         } else {
             this.invalidCode = !mailCodeVerification.valid;
