@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import axios, { AxiosRequestHeaders } from 'axios';
+import axios from 'axios';
 import { User } from 'src/app/interfaces/User';
 import { TSigninResponse } from 'src/app/types/TSigninResponse';
 import { TUser } from 'src/app/types/TUser';
@@ -80,16 +80,19 @@ export class AuthService {
 
             if (headerRequest) {
                 axios
-                    .get(environment.globalBackendUrl + 'is-authenticated', {
-                        headers: headerRequest,
-                    } as AxiosRequestHeaders)
+                    .get(environment.globalBackendUrl + 'is-authenticated/' + user.userId, {
+                        headers: {
+                            Authorization: headerRequest,
+                        },
+                    })
                     .then((res) => {
                         if (res.status === 200 && res.data.message.includes('User authenticated')) {
                             resolve(true);
                         }
                     })
                     .catch((error) => {
-                        resolve(false);
+                        console.log(error);
+                        reject(false);
                     });
             } else {
                 reject(false);
