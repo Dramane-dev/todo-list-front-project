@@ -4,7 +4,8 @@
             "Title": "Simply Todo",
             "Signin": "Se connecter",
             "Signup": "S'inscrire",
-            "Signout": "Déconnexion"
+            "Signout": "Déconnexion",
+            "Dashboard": "Dashboard"
         },
         "NewProjectButton": {
             "Title": "Nouveau projet",

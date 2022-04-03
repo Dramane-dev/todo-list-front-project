@@ -6,6 +6,9 @@
         </div>
         <div class="spacer"></div>
         <ng-container *ngIf="userIsLogged(); else notAuthenticated">
+            <div class="navbar-item-border" (click)="navigateTo('/dashboard')">
+                <div class="navbar-item signup">{{ "Components.Navbar.Dashboard" | translate }}</div>
+            </div>
             <div class="navbar-item-border" (click)="signout()">
                 <div class="navbar-item signup">{{ "Components.Navbar.Signout" | translate }}</div>
             </div>

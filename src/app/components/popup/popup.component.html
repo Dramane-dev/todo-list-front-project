@@ -29,7 +29,7 @@
             <textarea formControlName="taskDescription" [value]="this.data.taskDescription"></textarea>
         </div>
         <div class="buttons-container">
-            <div class="update-button" [mat-dialog-close]="data" (click)="isNewTaskPopup ? createTask() : updateTask()">
+            <div class="update-button" [mat-dialog-close]="data" (click)="updateTask()">
                 {{ "Components.Popup.UpdateTask.Buttons.Update" | translate }}
             </div>
             <div class="cancel-button" (click)="popupClosed()">

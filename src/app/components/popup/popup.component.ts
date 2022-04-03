@@ -4,6 +4,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { ProjectService } from 'src/app/services/project/project.service';
 import { IDataPopup } from 'src/app/interfaces/IPopupDatas';
 import { IProject } from 'src/app/interfaces/IProject';
+import { TaskService } from 'src/app/services/task/task.service';
 
 @Component({
     selector: 'app-popup',
@@ -16,8 +17,11 @@ export class PopupComponent implements OnInit {
     public isDeletedTaskPopup: boolean = false;
     public isNewProjectPopup: boolean = false;
     public isUpdateProjectPopup: boolean = false;
+    public taskId: number = 0;
     public taskName: string = '';
     public taskDescription: string = '';
+    public taskCreatedAt: string = '';
+    public projectId: number = 0;
     public projectName: string = '';
 
     taskForm: FormGroup = new FormGroup({
@@ -34,7 +38,8 @@ export class PopupComponent implements OnInit {
         public popupRef: MatDialogRef<PopupComponent>,
         @Inject(MAT_DIALOG_DATA)
         public data: IDataPopup,
-        private _projectService: ProjectService
+        private _projectService: ProjectService,
+        private _taskService: TaskService
     ) {}
 
     ngOnInit(): void {
@@ -47,9 +52,12 @@ export class PopupComponent implements OnInit {
         this.isDeletedTaskPopup = this.data.isDeletedTaskPopup;
         this.isNewProjectPopup = this.data.isNewProjectPopup;
         this.isUpdateProjectPopup = this.data.isUpdateProjectPopup;
+        this.projectId = this.data.projectId;
+        this.taskId = this.data.taskId;
         this.projectName = this.data.projectName;
         this.taskForm.get('taskName')?.setValue(this.data.taskName);
         this.taskForm.get('taskDescription')?.setValue(this.data.taskDescription);
+        this.taskCreatedAt = this.data.taskCreatedAt;
     }
 
     popupClosed(): void {
@@ -57,26 +65,69 @@ export class PopupComponent implements OnInit {
     }
 
     createTask(): void {
-        const { taskName, taskDescription } = this.projectForm.controls;
+        const { taskName, taskDescription } = this.taskForm.controls;
         this.data.taskName = taskName.value;
         this.data.taskDescription = taskDescription.value;
+
+        this._taskService
+            .create(
+                {
+                    id: 0,
+                    name: taskName.value,
+                    description: taskDescription.value,
+                    created_at: '',
+                    projectId: this.projectId,
+                },
+                this.projectId,
+                this.data.user.accessToken
+            )
+            .then((result) => {
+                console.log(result);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     }
 
     updateTask(): void {
-        const { taskName, taskDescription } = this.projectForm.controls;
+        const { taskName, taskDescription } = this.taskForm.controls;
         this.data.taskName = taskName.value;
         this.data.taskDescription = taskDescription.value;
+
+        this._taskService
+            .update(
+                {
+                    id: this.taskId,
+                    name: taskName.value,
+                    description: taskDescription.value,
+                    created_at: this.taskCreatedAt,
+                    projectId: this.projectId,
+                },
+                this.projectId,
+                this.data.user.accessToken
+            )
+            .then((res) => {
+                console.log(res);
+            })
+            .catch((error) => {
+                console.log(error.message);
+            });
     }
 
     deleteTask(): void {
         this.data.taskDeleted = true;
+        this._taskService
+            .delete(this.taskId, this.data.user.accessToken)
+            .then((res) => {
+                console.log(res);
+            })
+            .catch((error) => {
+                console.log(error.message);
+            });
     }
 
     createProject(): void {
         const { projectName, projectDescription } = this.projectForm.controls;
-
-        console.log(projectName.value);
-        console.log(projectDescription.value);
 
         if (this.projectForm.valid) {
             this._projectService
@@ -90,7 +141,6 @@ export class PopupComponent implements OnInit {
                 )
                 .then((res) => {
                     console.log(res);
-                    // this.newProject.emit(true);
                 })
                 .catch((error) => {
                     console.log(error);
@@ -106,4 +156,6 @@ export class PopupComponent implements OnInit {
         this.data.projectName = projectName.value;
         this.data.projectDescription = projectDescription.value;
     }
+
+    deleteProject(): void {}
 }
