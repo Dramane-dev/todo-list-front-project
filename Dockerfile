@@ -7,8 +7,7 @@ EXPOSE 5000
 ENV PATH /todo-list-front-project/node_modules/.bin:$PATH
 
 COPY package.json /todo-list-front-project/package.json
-RUN npm install -g npm@8.7.0
-RUN npm install
+RUN npm install --legacy-peer-deps
 COPY ./ /todo-list-front-project
 RUN npm run build
 
