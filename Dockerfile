@@ -8,7 +8,7 @@ ENV PATH /todo-list-front-project/node_modules/.bin:$PATH
 
 COPY package.json /todo-list-front-project/package.json
 RUN npm install
-COPY ./ /todo-list-front
+COPY ./ /todo-list-front-project
 RUN npm run build
 
 FROM nginx
