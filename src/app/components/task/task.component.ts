@@ -24,7 +24,6 @@ export class TaskComponent implements OnInit {
     }
 
     deleteTask(isDelete: boolean) {
-        console.log('Implement the delete Task function');
         this.isDeletedButton.emit(isDelete);
     }
 }

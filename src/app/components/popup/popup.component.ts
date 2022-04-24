@@ -5,6 +5,7 @@ import { ProjectService } from 'src/app/services/project/project.service';
 import { IDataPopup } from 'src/app/interfaces/IPopupDatas';
 import { IProject } from 'src/app/interfaces/IProject';
 import { TaskService } from 'src/app/services/task/task.service';
+import { IUpdateProject } from 'src/app/interfaces/IUpdateProject';
 
 @Component({
     selector: 'app-popup',
@@ -23,6 +24,7 @@ export class PopupComponent implements OnInit {
     public taskCreatedAt: string = '';
     public projectId: number = 0;
     public projectName: string = '';
+    public projectDescription: string = '';
 
     taskForm: FormGroup = new FormGroup({
         taskName: new FormControl(''),
@@ -55,6 +57,9 @@ export class PopupComponent implements OnInit {
         this.projectId = this.data.projectId;
         this.taskId = this.data.taskId;
         this.projectName = this.data.projectName;
+        this.projectDescription = this.data.projectDescription;
+        this.projectForm.get('projectName')?.setValue(this.data.projectName);
+        this.projectForm.get('projectDescription')?.setValue(this.data.projectDescription);
         this.taskForm.get('taskName')?.setValue(this.data.taskName);
         this.taskForm.get('taskDescription')?.setValue(this.data.taskDescription);
         this.taskCreatedAt = this.data.taskCreatedAt;
@@ -77,13 +82,12 @@ export class PopupComponent implements OnInit {
                     description: taskDescription.value,
                     created_at: '',
                     projectId: this.projectId,
+                    status: this.data.taskStatus,
                 },
                 this.projectId,
                 this.data.user.accessToken
             )
-            .then((result) => {
-                console.log(result);
-            })
+            .then((result) => {})
             .catch((error) => {
                 console.log(error);
             });
@@ -100,15 +104,14 @@ export class PopupComponent implements OnInit {
                     id: this.taskId,
                     name: taskName.value,
                     description: taskDescription.value,
+                    status: this.data.taskStatus,
                     created_at: this.taskCreatedAt,
                     projectId: this.projectId,
                 },
                 this.projectId,
                 this.data.user.accessToken
             )
-            .then((res) => {
-                console.log(res);
-            })
+            .then((res) => {})
             .catch((error) => {
                 console.log(error.message);
             });
@@ -118,9 +121,7 @@ export class PopupComponent implements OnInit {
         this.data.taskDeleted = true;
         this._taskService
             .delete(this.taskId, this.data.user.accessToken)
-            .then((res) => {
-                console.log(res);
-            })
+            .then((res) => {})
             .catch((error) => {
                 console.log(error.message);
             });
@@ -139,9 +140,7 @@ export class PopupComponent implements OnInit {
                     this.data.user.accessToken,
                     String(this.data.user.userId)
                 )
-                .then((res) => {
-                    console.log(res);
-                })
+                .then((res) => {})
                 .catch((error) => {
                     console.log(error);
                 });
@@ -155,7 +154,16 @@ export class PopupComponent implements OnInit {
         const { projectName, projectDescription } = this.projectForm.controls;
         this.data.projectName = projectName.value;
         this.data.projectDescription = projectDescription.value;
-    }
+        let project: IUpdateProject = {
+            projectName: projectName.value,
+            projectDescription: projectDescription.value,
+        };
 
-    deleteProject(): void {}
+        this._projectService
+            .updateProject(this.projectId, project, this.data.user.accessToken)
+            .then((res) => {})
+            .catch((error) => {
+                console.log(error.message);
+            });
+    }
 }

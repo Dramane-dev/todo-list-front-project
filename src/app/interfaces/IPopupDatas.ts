@@ -4,6 +4,7 @@ export interface IDataPopup {
     taskId: number;
     taskName: string;
     taskDescription: string;
+    taskStatus: string;
     taskCreatedAt: string;
     isNewTaskPopup: boolean;
     isUpdateTaskPopup: boolean;

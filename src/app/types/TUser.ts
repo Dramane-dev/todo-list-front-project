@@ -8,4 +8,5 @@ export type TUser = {
     mailVerificationCode: string;
     accessToken: string;
     isAuthenticated: boolean;
+    bio?: string;
 };

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import axios, { AxiosRequestHeaders } from 'axios';
 import { IProject } from 'src/app/interfaces/IProject';
+import { IUpdateProject } from 'src/app/interfaces/IUpdateProject';
 import { environment } from 'src/environments/environment';
 import { AddTokenToHeaderService } from '../requests/add-token-to-header.service';
 
@@ -70,10 +71,10 @@ export class ProjectService {
         });
     }
 
-    updateProject(projectId: string, project: any, token: string): Promise<any> {
+    updateProject(projectId: number, project: IUpdateProject, token: string): Promise<any> {
         return new Promise(async (resolve, reject) => {
             axios
-                .put(environment.globalBackendUrl + 'project/' + projectId, project, {
+                .put(`${environment.globalBackendUrl}project/${projectId}`, project, {
                     headers: await this._addTokenToHeaderService.addToken(token),
                 })
                 .then((res) => {
@@ -89,7 +90,7 @@ export class ProjectService {
         });
     }
 
-    deleteProject(projectId: string, token: string): Promise<any> {
+    deleteProject(projectId: number, token: string): Promise<any> {
         return new Promise(async (resolve, reject) => {
             axios
                 .delete(environment.globalBackendUrl + 'project/' + projectId, {

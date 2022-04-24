@@ -62,24 +62,26 @@ export class DashboardComponent implements OnInit {
                 return this.projects;
             })
             .then((projects) => {
-                projects.map((project: IProject) => {
-                    project.tasks?.map((task: ITask) => {
-                        switch (true) {
-                            case task.status === 'todo':
-                                // this.tasks.push(task);
-                                this.tasks = [...this.tasks, task];
-                                break;
-                            case task.status === 'doing':
-                                this.doing = [...this.doing, task];
-                                break;
-                            case task.status === 'done':
-                                this.done = [...this.done, task];
-                                break;
-                            default:
-                                break;
-                        }
+                projects
+                    .filter((project: IProject) => project.projectId === this.projectId)
+                    .map((project: IProject) => {
+                        project.tasks?.map((task: ITask) => {
+                            switch (true) {
+                                case task.status === 'todo':
+                                    // this.tasks.push(task);
+                                    this.tasks = [...this.tasks, task];
+                                    break;
+                                case task.status === 'doing':
+                                    this.doing = [...this.doing, task];
+                                    break;
+                                case task.status === 'done':
+                                    this.done = [...this.done, task];
+                                    break;
+                                default:
+                                    break;
+                            }
+                        });
                     });
-                });
             })
             .catch((error) => {
                 console.log(error);
@@ -123,9 +125,7 @@ export class DashboardComponent implements OnInit {
 
         this._taskService
             .updateStatus(task, this.user.accessToken)
-            .then((res) => {
-                console.log(res);
-            })
+            .then((res) => {})
             .catch((error) => {
                 console.log(error.message);
             });
@@ -144,8 +144,26 @@ export class DashboardComponent implements OnInit {
     }
 
     tasksFill(actualProject: IProject) {
+        if (actualProject.tasks?.length === 0) {
+            this.tasks = [];
+            this.doing = [];
+            this.done = [];
+        }
+
         actualProject.tasks?.map((task: ITask) => {
-            this.tasks.push(task);
+            switch (true) {
+                case task.status === 'todo':
+                    this.tasks = [task];
+                    break;
+                case task.status === 'doing':
+                    this.doing = [task];
+                    break;
+                case task.status === 'done':
+                    this.done = [task];
+                    break;
+                default:
+                    break;
+            }
         });
     }
 
@@ -157,12 +175,15 @@ export class DashboardComponent implements OnInit {
         taskId?: number,
         taskName?: string,
         taskDescription?: string,
+        taskStatus?: string,
         taskCreatedAt?: string,
         isNewTaskPopup?: boolean,
         isUpdateTaskPopup?: boolean,
         isDeletedTaskPopup?: boolean,
         isNewProjectPopup?: boolean,
-        isUpdateProjectPopup?: boolean
+        isUpdateProjectPopup?: boolean,
+        projectName?: string,
+        projectDescription?: string
     ): void {
         switch (true) {
             case isDeletedTaskPopup:
@@ -174,6 +195,7 @@ export class DashboardComponent implements OnInit {
                     taskId,
                     taskName,
                     taskDescription,
+                    taskStatus,
                     taskCreatedAt,
                     isNewTaskPopup,
                     isUpdateTaskPopup
@@ -183,7 +205,7 @@ export class DashboardComponent implements OnInit {
                 this.showNewProjectPopup(isNewProjectPopup);
                 break;
             case isUpdateProjectPopup:
-                this.showUpdateProjectPopup(isUpdateProjectPopup);
+                this.showUpdateProjectPopup(this.projectId, isUpdateProjectPopup, projectName, projectDescription);
                 break;
         }
     }
@@ -193,6 +215,7 @@ export class DashboardComponent implements OnInit {
         taskId?: number,
         taskName?: string,
         taskDescription?: string,
+        taskStatus?: string,
         taskCreatedAt?: string,
         isNewTaskPopup?: boolean,
         isUpdateTaskPopup?: boolean
@@ -204,6 +227,7 @@ export class DashboardComponent implements OnInit {
                 taskId: taskId,
                 taskName: taskName,
                 taskDescription: taskDescription,
+                taskStatus: taskStatus,
                 taskCreatedAt: taskCreatedAt,
                 isNewTaskPopup: isNewTaskPopup,
                 isUpdateTaskPopup: isUpdateTaskPopup,
@@ -212,8 +236,6 @@ export class DashboardComponent implements OnInit {
         });
 
         popupRef.afterClosed().subscribe((result: ITaskPopup) => {
-            // console.log('[ pop up closed ]');
-            // console.log(result);
             this.getAllProjects();
         });
     }
@@ -230,8 +252,6 @@ export class DashboardComponent implements OnInit {
         });
 
         popupRef.afterClosed().subscribe((result) => {
-            console.log('[ pop up closed ]');
-            console.log(result);
             this.getAllProjects();
         });
 
@@ -250,28 +270,41 @@ export class DashboardComponent implements OnInit {
         });
 
         popupRef.afterClosed().subscribe((result) => {
-            // console.log('[ pop up closed ]');
-            // console.log(result);
             this.getAllProjects();
         });
     }
 
-    showUpdateProjectPopup(isUpdateProjectPopup?: boolean): void {
+    showUpdateProjectPopup(
+        projectId?: number,
+        isUpdateProjectPopup?: boolean,
+        projectName?: string,
+        projectDescription?: string
+    ): void {
         const popupRef = this.dialog.open(PopupComponent, {
             width: '30%',
             data: {
-                projectName: '',
-                projectDescription: '',
+                projectId: projectId,
+                projectName: projectName,
+                projectDescription: projectDescription,
                 isUpdateProjectPopup: isUpdateProjectPopup,
                 user: this.user,
             },
         });
 
         popupRef.afterClosed().subscribe((result) => {
-            // console.log('[ pop up closed ]');
-            // console.log(result);
             this.getAllProjects();
         });
+    }
+
+    deleteProject(): void {
+        this._projectService
+            .deleteProject(this.projectId, this.user.accessToken)
+            .then((res) => {
+                this.getAllProjects();
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     }
 
     navigateTo(url: string): void {

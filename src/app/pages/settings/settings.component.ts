@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TUser } from 'src/app/types/TUser';
+import { StorageService } from 'src/app/services/storage/storage.service';
 
 @Component({
     selector: 'app-settings',
@@ -7,16 +9,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SettingsComponent implements OnInit {
     public fileUrl: string = '../../../assets/images/user-image.png';
+    public currentUser: TUser | null = null;
 
-    private _storage: Storage = window.localStorage;
-
-    constructor() {}
+    constructor(private _storageService: StorageService) {}
 
     ngOnInit(): void {
         let userHaveAnImage: boolean = this.checkUserImage();
         if (userHaveAnImage) {
-            this.fileUrl = this.getUserImageFromStorage();
+            this.getUserImageFromStorage()
+                .then((imageUrl) => {
+                    this.fileUrl = imageUrl;
+                })
+                .catch((error) => {
+                    this.fileUrl = '';
+                });
         }
+
+        this._storageService
+            .getFromLocalStorage('userInformations')
+            .then((user) => {
+                this.currentUser = JSON.parse(user);
+            })
+            .catch((error) => {
+                this.currentUser = null;
+            });
     }
 
     onFileSelected(event: any): void {
@@ -28,25 +44,21 @@ export class SettingsComponent implements OnInit {
             reader.onload = (e: any) => {
                 let { result } = e.target;
                 this.fileUrl = result;
-                this.saveUserImageToLocalStorage(result);
+                this._storageService.saveFromLocalStorage('user-profile-image', this.fileUrl);
             };
         }
     }
 
-    saveUserImageToLocalStorage(imgPath: string): void {
-        this._storage.setItem('user-profile-image', imgPath);
-    }
-
     checkUserImage(): boolean {
-        return this._storage.getItem('user-profile-image') !== null;
+        return this._storageService.getFromLocalStorage('user-profile-image') !== null;
     }
 
-    getUserImageFromStorage(): string {
-        return this._storage.getItem('user-profile-image') as string;
+    async getUserImageFromStorage(): Promise<string> {
+        return (await this._storageService.getFromLocalStorage('user-profile-image')) as string;
     }
 
     deleteUserImageFromStorage(): void {
-        this._storage.removeItem('user-profile-image');
+        this._storageService.removeFromLocalStorage('user-profile-image');
         this.resetUserImage();
     }
 

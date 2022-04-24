@@ -19,30 +19,30 @@
     </div>
     <div class="update-profile-container">
         <div class="fields-container">
-            <div class="username-container">
+            <div class="input-container">
                 <label>{{ "Pages.Settings.FieldsSection.UserLastName" | translate }}</label>
-                <input type="text" />
+                <input type="text" [value]="currentUser?.lastname" />
             </div>
             <div class="separator"></div>
-            <div class="userlastname-container">
+            <div class="input-container">
                 <label>{{ "Pages.Settings.FieldsSection.UserFirstName" | translate }}</label>
-                <input type="text" />
+                <input type="text" [value]="currentUser?.firstname" />
             </div>
             <div class="separator"></div>
-            <div class="username-container">
+            <div class="input-container">
                 <label>{{ "Pages.Settings.FieldsSection.Email" | translate }}</label>
-                <input type="text" />
+                <input type="text" [value]="currentUser?.email" />
             </div>
             <div class="separator"></div>
-            <div class="username-container">
+            <div class="input-container">
                 <label>{{ "Pages.Settings.FieldsSection.Password" | translate }}</label>
-                <input type="text" />
+                <input type="password" [value]="currentUser?.password" />
             </div>
             <div class="separator"></div>
             <div class="separator"></div>
-            <div class="username-container">
+            <div class="input-container">
                 <label>{{ "Pages.Settings.FieldsSection.Bio" | translate }}</label>
-                <textarea></textarea>
+                <textarea [value]="currentUser?.bio ? currentUser?.bio : ''"></textarea>
             </div>
             <div class="separator"></div>
         </div>

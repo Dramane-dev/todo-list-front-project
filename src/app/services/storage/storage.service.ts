@@ -38,7 +38,7 @@ export class StorageService {
 
     userIsAuthenticated(key: string): boolean {
         let actualUser: TUser = JSON.parse(this._storage.getItem(key) as string);
-        return actualUser.isAuthenticated;
+        return actualUser ? actualUser.isAuthenticated : false;
     }
 
     getUserAccessToken(key: string): string {

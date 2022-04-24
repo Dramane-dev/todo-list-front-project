@@ -7,7 +7,7 @@
         <app-button [settingsButton]="true" (click)="navigateTo('settings')"></app-button>
         <app-button
             [newProjectButton]="true"
-            (click)="openPopup(undefined, '', '', '', false, false, false, true)"
+            (click)="openPopup(undefined, '', '', '', '', false, false, false, true)"
         ></app-button>
         <ng-container *ngFor="let project of projects">
             <app-button
@@ -26,11 +26,26 @@
             <div class="buttons">
                 <div
                     class="update-project-button"
-                    (click)="openPopup(undefined, '', '', '', false, false, false, false, true)"
+                    (click)="
+                        openPopup(
+                            undefined,
+                            '',
+                            '',
+                            '',
+                            '',
+                            false,
+                            false,
+                            false,
+                            false,
+                            true,
+                            projectName,
+                            projectDescription
+                        )
+                    "
                 >
                     {{ "Pages.Dashboard.Buttons.Update" | translate }}
                 </div>
-                <div class="delete-project-button">
+                <div class="delete-project-button" (click)="deleteProject()">
                     {{ "Pages.Dashboard.Buttons.Delete" | translate }}
                 </div>
             </div>
@@ -61,7 +76,7 @@
                         >
                             <app-button
                                 [newTaskButton]="true"
-                                (click)="openPopup(undefined, '', '', '', true, false)"
+                                (click)="openPopup(undefined, '', '', 'todo', '', true, false)"
                             ></app-button>
                             <ng-container *ngFor="let task of tasks">
                                 <app-task
@@ -80,6 +95,7 @@
                                             task.id,
                                             task.name,
                                             task.description,
+                                            task.status,
                                             '',
                                             false,
                                             isDeletedButton ? false : true,
@@ -104,7 +120,7 @@
                         >
                             <app-button
                                 [newTaskButton]="true"
-                                (click)="openPopup(undefined, '', '', '', true, false)"
+                                (click)="openPopup(undefined, '', '', 'doing', '', true, false)"
                             ></app-button>
                             <ng-container *ngFor="let doingTask of doing">
                                 <app-task
@@ -122,6 +138,7 @@
                                             doingTask.id,
                                             doingTask.name,
                                             doingTask.description,
+                                            'doing',
                                             '',
                                             false,
                                             isDeletedButton ? false : true,
@@ -146,7 +163,7 @@
                         >
                             <app-button
                                 [newTaskButton]="true"
-                                (click)="openPopup(undefined, '', '', '', true, false)"
+                                (click)="openPopup(undefined, '', '', 'done', '', true, false)"
                             ></app-button>
                             <ng-container *ngFor="let doneTask of done">
                                 <app-task
@@ -164,6 +181,7 @@
                                             doneTask.id,
                                             doneTask.name,
                                             doneTask.description,
+                                            'done',
                                             '',
                                             false,
                                             isDeletedButton ? false : true,

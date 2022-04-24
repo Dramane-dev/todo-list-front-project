@@ -78,9 +78,9 @@
         </div>
         <div class="inputs-container" [formGroup]="projectForm">
             <label>{{ "Components.Popup.UpdateProject.Labels.ProjectName" | translate }}</label>
-            <input type="text" formControlName="projectName" />
+            <input type="text" formControlName="projectName" [value]="this.data.projectName" />
             <label>{{ "Components.Popup.UpdateProject.Labels.ProjectDescription" | translate }}</label>
-            <textarea formControlName="projectDescription"></textarea>
+            <textarea formControlName="projectDescription" [value]="this.data.projectDescription"></textarea>
         </div>
         <div class="buttons-container">
             <div class="create-button" [mat-dialog-close]="data" (click)="updateProject()">

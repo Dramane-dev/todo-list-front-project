@@ -29,12 +29,10 @@ export class AuthService {
             axios
                 .post(environment.globalBackendUrl + 'signup', user)
                 .then((res) => {
-                    console.log(res);
                     resolve(res.data.user);
                 })
                 .catch((error) => {
                     const { status, data } = error.response;
-                    console.log(data);
                     reject(data.message);
                 });
         });
@@ -51,7 +49,6 @@ export class AuthService {
                 })
                 .catch((error) => {
                     const { status, data } = error.response;
-                    console.log(data);
                     reject(data.message);
                 });
         });
@@ -91,7 +88,6 @@ export class AuthService {
                         }
                     })
                     .catch((error) => {
-                        console.log(error);
                         reject(false);
                     });
             } else {
