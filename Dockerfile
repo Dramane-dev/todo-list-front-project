@@ -15,5 +15,4 @@ FROM nginx
 COPY --from=angular-build /todo-list-front-project/dist /usr/share/nginx/html
 RUN rm /etc/nginx/conf.d/default.conf
 COPY nginx.conf /etc/nginx/conf.d/default.conf
-RUN chmod -R 777 /usr/nginx/html/static/
 CMD ["nginx", "-g", "deamon off;"]
