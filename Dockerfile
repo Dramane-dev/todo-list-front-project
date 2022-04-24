@@ -1,4 +1,4 @@
-FROM node:16-slim as angular-build
+FROM node:latest as angular-build
 
 WORKDIR /todo-list-front-project
 
