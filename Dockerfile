@@ -1,18 +1,13 @@
-FROM node:16.14.2-slim as angular-build
-
-WORKDIR /todo-list-front-project
-
-EXPOSE 5000
-
-ENV PATH /todo-list-front-project/node_modules/.bin:$PATH
-
-COPY package.json /todo-list-front-project/package.json
+FROM node:16-alpine as angular-build
+WORKDIR /todo-list-front
+COPY ./package.json ./
 RUN npm install --legacy-peer-deps
-COPY ./ /todo-list-front-project
+COPY . .
 RUN npm run build
 
-FROM nginx
-COPY --from=angular-build /todo-list-front-project/dist /usr/share/nginx/html
-RUN rm /etc/nginx/conf.d/default.conf
+FROM nginx:alpine
+EXPOSE 5001
+WORKDIR /usr/share/nginx/html
+RUN rm -rf ./*
 COPY nginx.conf /etc/nginx/conf.d/default.conf
-CMD ["nginx", "-g", "deamon off;"]
+COPY --from=angular-build /todo-list-front/dist/todo-list-front .
