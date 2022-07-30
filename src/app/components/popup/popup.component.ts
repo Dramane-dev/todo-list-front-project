@@ -6,6 +6,7 @@ import { IDataPopup } from 'src/app/interfaces/IPopupDatas';
 import { IProject } from 'src/app/interfaces/IProject';
 import { TaskService } from 'src/app/services/task/task.service';
 import { IUpdateProject } from 'src/app/interfaces/IUpdateProject';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
     selector: 'app-popup',
@@ -18,6 +19,7 @@ export class PopupComponent implements OnInit {
     public isDeletedTaskPopup: boolean = false;
     public isNewProjectPopup: boolean = false;
     public isUpdateProjectPopup: boolean = false;
+    public isDeletedProjectPopup: boolean = false;
     public taskId: number = 0;
     public taskName: string = '';
     public taskDescription: string = '';
@@ -41,7 +43,8 @@ export class PopupComponent implements OnInit {
         @Inject(MAT_DIALOG_DATA)
         public data: IDataPopup,
         private _projectService: ProjectService,
-        private _taskService: TaskService
+        private _taskService: TaskService,
+        private _notificationService: NotifierService
     ) {}
 
     ngOnInit(): void {
@@ -54,6 +57,7 @@ export class PopupComponent implements OnInit {
         this.isDeletedTaskPopup = this.data.isDeletedTaskPopup;
         this.isNewProjectPopup = this.data.isNewProjectPopup;
         this.isUpdateProjectPopup = this.data.isUpdateProjectPopup;
+        this.isDeletedProjectPopup = this.data.isDeletedProjectPopup;
         this.projectId = this.data.projectId;
         this.taskId = this.data.taskId;
         this.projectName = this.data.projectName;
@@ -87,9 +91,11 @@ export class PopupComponent implements OnInit {
                 this.projectId,
                 this.data.user.accessToken
             )
-            .then((result) => {})
+            .then(() => {
+                this._notificationService.notify('success', 'Une nouvelle tâche a été créer !');
+            })
             .catch((error) => {
-                console.log(error);
+                this._notificationService.notify('error', error.message);
             });
     }
 
@@ -111,9 +117,11 @@ export class PopupComponent implements OnInit {
                 this.projectId,
                 this.data.user.accessToken
             )
-            .then((res) => {})
+            .then(() => {
+                this._notificationService.notify('success', 'La tâche a été mise à jour !');
+            })
             .catch((error) => {
-                console.log(error.message);
+                this._notificationService.notify('error', error.message);
             });
     }
 
@@ -121,9 +129,11 @@ export class PopupComponent implements OnInit {
         this.data.taskDeleted = true;
         this._taskService
             .delete(this.taskId, this.data.user.accessToken)
-            .then((res) => {})
+            .then(() => {
+                this._notificationService.notify('success', 'La tâche a bien été supprimée !');
+            })
             .catch((error) => {
-                console.log(error.message);
+                this._notificationService.notify('error', error.message);
             });
     }
 
@@ -140,9 +150,11 @@ export class PopupComponent implements OnInit {
                     this.data.user.accessToken,
                     String(this.data.user.userId)
                 )
-                .then((res) => {})
+                .then(() => {
+                    this._notificationService.notify('success', 'Un nouveau projet a été créer !');
+                })
                 .catch((error) => {
-                    console.log(error);
+                    this._notificationService.notify('error', error.message);
                 });
 
             this.data.projectName = projectName.value;
@@ -161,9 +173,22 @@ export class PopupComponent implements OnInit {
 
         this._projectService
             .updateProject(this.projectId, project, this.data.user.accessToken)
-            .then((res) => {})
+            .then(() => {
+                this._notificationService.notify('success', 'Le projet a bien été mis à jour !');
+            })
             .catch((error) => {
-                console.log(error.message);
+                this._notificationService.notify('error', error.message);
+            });
+    }
+
+    deleteProject(): void {
+        this._projectService
+            .deleteProject(this.projectId, this.data.user.accessToken)
+            .then(() => {
+                this._notificationService.notify('success', 'Le projet a bien été supprimé !');
+            })
+            .catch((error) => {
+                this._notificationService.notify('error', error.message);
             });
     }
 }

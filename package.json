@@ -1,10 +1,11 @@
 {
-    "name": "todo-list-front",
+    "name": "simplytodo-front",
     "version": "0.0.0",
     "scripts": {
         "ng": "ng",
         "start": "ng serve",
         "build": "ng build",
+        "buildProd": "ng build --base-href 'https://dramane.dev/simplytodo/'",
         "watch": "ng build --watch --configuration development",
         "test": "ng test",
         "prettier": "prettier --check .",
@@ -12,6 +13,8 @@
         "prepare": "husky install"
     },
     "private": true,
+    "proxy": "http://localhost:5001",
+    "homepage": "https://dramane.dev/simplytodo",
     "dependencies": {
         "@angular/animations": "~12.2.0",
         "@angular/cdk": "^12.2.13",
@@ -26,6 +29,7 @@
         "@ngx-translate/core": "^14.0.0",
         "@ngx-translate/http-loader": "^7.0.0",
         "@types/axios": "^0.14.0",
+        "angular-notifier": "^11.0.0",
         "axios": "^0.26.0",
         "rxjs": "^6.6.7",
         "tslib": "^2.3.0",

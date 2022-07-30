@@ -10,6 +10,7 @@ import { IProject } from 'src/app/interfaces/IProject';
 import { ITask } from '../../interfaces/ITask';
 import { ITaskPopup } from 'src/app/interfaces/ITaskPopup';
 import { TaskService } from 'src/app/services/task/task.service';
+import { NotifierService } from 'angular-notifier';
 @Component({
     selector: 'app-dashboard',
     templateUrl: './dashboard.component.html',
@@ -24,6 +25,7 @@ export class DashboardComponent implements OnInit {
     public projectName: string = '';
     public projectDescription: string = '';
     public isDeletedButton: boolean = false;
+    public userHasProjects: boolean = false;
     public user: TUser = {} as TUser;
     @Input() grab: boolean = true;
     @Input() grabbing: boolean = false;
@@ -33,7 +35,8 @@ export class DashboardComponent implements OnInit {
         private _router: Router,
         private _storageService: StorageService,
         private _projectService: ProjectService,
-        private _taskService: TaskService
+        private _taskService: TaskService,
+        private _notificationService: NotifierService
     ) {}
 
     ngOnInit(): void {
@@ -52,39 +55,54 @@ export class DashboardComponent implements OnInit {
             .getAllProjects(String(this.user.userId), this.user.accessToken)
             .then((res) => {
                 const { message, result } = res.data;
-                this.tasks = [];
-                this.doing = [];
-                this.done = [];
-                this.projects = result;
-                this.projectId = this.projects[0].projectId as number;
-                this.projectName = this.projects[0].name;
-                this.projectDescription = this.projects[0].description;
+                if (result.length > 0) {
+                    this.tasks = [];
+                    this.doing = [];
+                    this.done = [];
+                    this.projects = result;
+                    this.projectId = this.projects[0].projectId as number;
+                    this.projectName = this.projects[0].name;
+                    this.projectDescription = this.projects[0].description;
+                    this.userHasProjects = true;
+                } else {
+                    this.tasks = [];
+                    this.doing = [];
+                    this.done = [];
+                    this.projects = [];
+                    this.projects = [];
+                    this.projectId = 0;
+                    this.projectName = '';
+                    this.projectDescription = '';
+                }
+
                 return this.projects;
             })
             .then((projects) => {
-                projects
-                    .filter((project: IProject) => project.projectId === this.projectId)
-                    .map((project: IProject) => {
-                        project.tasks?.map((task: ITask) => {
-                            switch (true) {
-                                case task.status === 'todo':
-                                    // this.tasks.push(task);
-                                    this.tasks = [...this.tasks, task];
-                                    break;
-                                case task.status === 'doing':
-                                    this.doing = [...this.doing, task];
-                                    break;
-                                case task.status === 'done':
-                                    this.done = [...this.done, task];
-                                    break;
-                                default:
-                                    break;
-                            }
+                if (this.projects.length > 0) {
+                    projects
+                        .filter((project: IProject) => project.projectId === this.projectId)
+                        .map((project: IProject) => {
+                            project.tasks?.map((task: ITask) => {
+                                switch (true) {
+                                    case task.status === 'todo':
+                                        // this.tasks.push(task);
+                                        this.tasks = [...this.tasks, task];
+                                        break;
+                                    case task.status === 'doing':
+                                        this.doing = [...this.doing, task];
+                                        break;
+                                    case task.status === 'done':
+                                        this.done = [...this.done, task];
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            });
                         });
-                    });
+                }
             })
             .catch((error) => {
-                console.log(error);
+                this._notificationService.notify('error', error);
             });
     }
 
@@ -125,9 +143,11 @@ export class DashboardComponent implements OnInit {
 
         this._taskService
             .updateStatus(task, this.user.accessToken)
-            .then((res) => {})
+            .then((res) => {
+                this._notificationService.notify('success', 'Votre tâche a bien été mise à jour !');
+            })
             .catch((error) => {
-                console.log(error.message);
+                this._notificationService.notify('error', error.message);
             });
     }
 
@@ -144,11 +164,15 @@ export class DashboardComponent implements OnInit {
     }
 
     tasksFill(actualProject: IProject) {
-        if (actualProject.tasks?.length === 0) {
-            this.tasks = [];
-            this.doing = [];
-            this.done = [];
-        }
+        this.tasks = [];
+        this.doing = [];
+        this.done = [];
+
+        // if (actualProject.tasks?.length === 0) {
+        //     this.tasks = [];
+        //     this.doing = [];
+        //     this.done = [];
+        // }
 
         actualProject.tasks?.map((task: ITask) => {
             switch (true) {
@@ -182,6 +206,7 @@ export class DashboardComponent implements OnInit {
         isDeletedTaskPopup?: boolean,
         isNewProjectPopup?: boolean,
         isUpdateProjectPopup?: boolean,
+        isDeletedProjectPopup?: boolean,
         projectName?: string,
         projectDescription?: string
     ): void {
@@ -206,6 +231,9 @@ export class DashboardComponent implements OnInit {
                 break;
             case isUpdateProjectPopup:
                 this.showUpdateProjectPopup(this.projectId, isUpdateProjectPopup, projectName, projectDescription);
+                break;
+            case isDeletedProjectPopup:
+                this.showDeleteProjectPopup(this.projectId, isDeletedProjectPopup);
                 break;
         }
     }
@@ -296,15 +324,20 @@ export class DashboardComponent implements OnInit {
         });
     }
 
-    deleteProject(): void {
-        this._projectService
-            .deleteProject(this.projectId, this.user.accessToken)
-            .then((res) => {
-                this.getAllProjects();
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+    showDeleteProjectPopup(projectId?: number, isDeletedProjectPopup?: boolean) {
+        const popupRef = this.dialog.open(PopupComponent, {
+            width: '30%',
+            data: {
+                projectId: projectId,
+                isDeletedProjectPopup: isDeletedProjectPopup,
+                user: this.user,
+            },
+        });
+
+        popupRef.afterClosed().subscribe((result) => {
+            this.getAllProjects();
+            console.log(this.projects.length);
+        });
     }
 
     navigateTo(url: string): void {

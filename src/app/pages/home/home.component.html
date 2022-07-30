@@ -8,10 +8,10 @@
         ></app-ball>
     </ng-container>
     <h1 class="banner-title">{{ "Pages.Home.Title" | translate }}</h1>
-    <div class="banner-subtitle">
+    <div [ngClass]="handsetScreen ? 'banner-subtitle-handset-screen' : 'banner-subtitle'">
         <p>{{ "Pages.Home.SubTitle" | translate }}</p>
     </div>
-    <div class="buttons-container">
+    <div [ngClass]="handsetScreen ? 'buttons-container-handset-screen' : 'buttons-container'">
         <div class="get-started-button" (click)="userIsLogged() ? navigateTo('/dashboard') : navigateTo('/signin')">
             <p class="content">{{ "Pages.Home.Buttons.GetStartedButton" | translate }}</p>
         </div>

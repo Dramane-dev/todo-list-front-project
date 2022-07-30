@@ -16,5 +16,6 @@ export interface IDataPopup {
     projectDescription: string;
     isNewProjectPopup: boolean;
     isUpdateProjectPopup: boolean;
+    isDeletedProjectPopup: boolean;
     user: TUser;
 }

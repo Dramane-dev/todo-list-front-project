@@ -83,11 +83,24 @@
             <textarea formControlName="projectDescription" [value]="this.data.projectDescription"></textarea>
         </div>
         <div class="buttons-container">
-            <div class="create-button" [mat-dialog-close]="data" (click)="updateProject()">
-                {{ "Components.Popup.UpdateProject.Buttons.Create" | translate }}
+            <div class="update-button" [mat-dialog-close]="data" (click)="updateProject()">
+                {{ "Components.Popup.UpdateProject.Buttons.Update" | translate }}
             </div>
             <div class="cancel-button" (click)="popupClosed()">
                 {{ "Components.Popup.UpdateProject.Buttons.Cancel" | translate }}
+            </div>
+        </div>
+    </div>
+    <div class="popup-container" *ngSwitchCase="isDeletedProjectPopup">
+        <div class="popup-title">
+            <p>[ {{ "Components.Popup.DeleteProject.Title" | translate }} ]</p>
+        </div>
+        <div class="buttons-container">
+            <div class="delete-button" [mat-dialog-close]="data" (click)="deleteProject()">
+                {{ "Components.Popup.DeleteProject.Buttons.Delete" | translate }}
+            </div>
+            <div class="cancel-button" (click)="popupClosed()">
+                {{ "Components.Popup.DeleteProject.Buttons.Cancel" | translate }}
             </div>
         </div>
     </div>

@@ -11,6 +11,11 @@
         font-size: 30px;
     }
 
+    .title-container-handset-screen {
+        font-weight: 700;
+        font-size: 20px;
+    }
+
     .form-container {
         width: 50%;
 
@@ -29,6 +34,20 @@
                 color: var(--white);
                 height: 40px;
                 width: 70%;
+                border: 2px solid var(--border-input-color);
+                border-radius: 10px;
+                font-size: medium;
+            }
+
+            .input-handset-screen {
+                margin: 3%;
+                padding: 1.5%;
+                background: none;
+                border: none;
+                outline: none;
+                color: var(--white);
+                width: 90%;
+                height: 40px;
                 border: 2px solid var(--border-input-color);
                 border-radius: 10px;
                 font-size: medium;
@@ -54,7 +73,7 @@
         background: var(--button-background);
         border-radius: 10px;
         cursor: pointer;
-        margin-top: 3%;
+        margin-top: 5%;
         --tw-translate-x: 0;
         --tw-translate-y: 0;
         --tw-rotate: 0;

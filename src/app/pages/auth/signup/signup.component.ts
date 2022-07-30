@@ -1,18 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { FormGroup, FormControl, Validators, ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
 import { Ball } from 'src/app/interfaces/Ball';
-import { User } from 'src/app/interfaces/User';
 import { TUser } from 'src/app/types/TUser';
 import { StorageService } from 'src/app/services/storage/storage.service';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Subscription } from 'rxjs';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
     selector: 'app-signup',
     templateUrl: './signup.component.html',
     styleUrls: ['./signup.component.scss'],
 })
-export class SignupComponent implements OnInit {
+export class SignupComponent implements OnInit, OnDestroy {
     public balls: Ball[] = [
         {
             property: 'topLeft',
@@ -39,10 +41,26 @@ export class SignupComponent implements OnInit {
     public isNotSamePassword: boolean = false;
     public allFieldsAreRequired: boolean = false;
     public emailMustBeUnique: boolean = false;
+    public handsetScreen: boolean = false;
+    private _subscriptions: Subscription = new Subscription();
 
-    constructor(private _router: Router, private _authService: AuthService, private _storageService: StorageService) {}
+    constructor(
+        private _router: Router,
+        private _authService: AuthService,
+        private _storageService: StorageService,
+        private _responsive: BreakpointObserver,
+        private _notificationService: NotifierService
+    ) {}
 
-    ngOnInit(): void {}
+    ngOnInit(): void {
+        this._subscriptions.add(
+            this._responsive.observe(Breakpoints.HandsetPortrait).subscribe((result) => {
+                if (result.matches) {
+                    this.handsetScreen = true;
+                }
+            })
+        );
+    }
 
     private _confirmedPassword(): ValidatorFn {
         return (control: AbstractControl): ValidationErrors | null => {
@@ -61,17 +79,23 @@ export class SignupComponent implements OnInit {
                 .signup(lastname.value, firstname.value, email.value, password.value, confirmedPassword.value)
                 .then((res) => {
                     let user: TUser = res;
+                    user.accessToken = '';
                     this.saveUserDatasInStorage('userInformations', user);
-                    this.navigateTo('confirmed-mail/' + user.userId);
+                    this._notificationService.notify(
+                        'success',
+                        'Votre compte a bien été créer ! Un email vous a été envoyé.'
+                    );
+                    setTimeout(() => {
+                        this.navigateTo('confirmed-mail/' + user.userId);
+                    }, 2500);
                 })
                 .catch((error) => {
                     if (error.includes('email must be unique')) {
-                        this.emailMustBeUnique = true;
+                        this._notificationService.notify('error', 'Un compte ayant cette adresse mail existe déjà !');
                     }
-                    console.log(error);
                 });
         } else {
-            this.allFieldsAreRequired = true;
+            this._notificationService.notify('error', 'Tous les champs sont requis !');
         }
     }
 
@@ -82,5 +106,9 @@ export class SignupComponent implements OnInit {
     saveUserDatasInStorage(key: string, user: TUser): void {
         let userStringified: string = JSON.stringify(user);
         this._storageService.saveFromLocalStorage(key, userStringified);
+    }
+
+    ngOnDestroy(): void {
+        this._subscriptions.unsubscribe();
     }
 }

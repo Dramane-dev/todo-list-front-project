@@ -1,12 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { TUser } from 'src/app/types/TUser';
 import { StorageService } from 'src/app/services/storage/storage.service';
-import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
 
 @Component({
     selector: 'app-confirmed-mail',
@@ -18,7 +16,7 @@ export class ConfirmedMailComponent implements OnInit, OnDestroy {
     public mailCodeVerificationForm: FormGroup = new FormGroup({
         mailCodeVerification: new FormControl(
             '',
-            Validators.compose([Validators.required, Validators.pattern(/(?:[A-Za-z0-9]{20})/)])
+            Validators.compose([Validators.required, Validators.pattern(/(?:[A-Za-z0-9]{10})/)])
         ),
     });
     public invalidCode: boolean = false;

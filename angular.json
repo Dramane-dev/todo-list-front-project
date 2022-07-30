@@ -3,7 +3,7 @@
     "version": 1,
     "newProjectRoot": "projects",
     "projects": {
-        "todo-list-front": {
+        "simplytodo-front": {
             "projectType": "application",
             "schematics": {
                 "@schematics/angular:component": {
@@ -20,13 +20,13 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
-                        "outputPath": "dist/todo-list-front",
+                        "outputPath": "dist/simplytodo-front",
                         "index": "src/index.html",
                         "main": "src/main.ts",
                         "polyfills": "src/polyfills.ts",
                         "tsConfig": "tsconfig.app.json",
                         "inlineStyleLanguage": "scss",
-                        "assets": ["src/tsks-logo.ico", "src/assets"],
+                        "assets": ["src/tsks-logo.ico", "src/assets", "src/"],
                         "styles": [
                             "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
                             "src/styles.scss"
@@ -70,10 +70,10 @@
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "configurations": {
                         "production": {
-                            "browserTarget": "todo-list-front:build:production"
+                            "browserTarget": "simplytodo-front:build:production"
                         },
                         "development": {
-                            "browserTarget": "todo-list-front:build:development"
+                            "browserTarget": "simplytodo-front:build:development"
                         }
                     },
                     "defaultConfiguration": "development"
@@ -81,7 +81,7 @@
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
-                        "browserTarget": "todo-list-front:build"
+                        "browserTarget": "simplytodo-front:build"
                     }
                 },
                 "test": {
@@ -103,5 +103,5 @@
             }
         }
     },
-    "defaultProject": "todo-list-front"
+    "defaultProject": "simplytodo-front"
 }

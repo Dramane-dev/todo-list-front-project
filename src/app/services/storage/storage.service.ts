@@ -23,8 +23,8 @@ export class StorageService {
     }
 
     updateFromLocalStorage(key: string, value: string): Promise<boolean> {
-        return new Promise((resolve, reject) => {
-            this._storage.setItem(key, value);
+        return new Promise(async (resolve, reject) => {
+            await this._storage.setItem(key, value);
             resolve(true);
         });
     }

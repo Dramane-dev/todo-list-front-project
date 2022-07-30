@@ -7,7 +7,7 @@
         <app-button [settingsButton]="true" (click)="navigateTo('settings')"></app-button>
         <app-button
             [newProjectButton]="true"
-            (click)="openPopup(undefined, '', '', '', '', false, false, false, true)"
+            (click)="openPopup(undefined, '', '', '', '', false, false, false, true, false, false)"
         ></app-button>
         <ng-container *ngFor="let project of projects">
             <app-button
@@ -38,6 +38,7 @@
                             false,
                             false,
                             true,
+                            false,
                             projectName,
                             projectDescription
                         )
@@ -45,7 +46,10 @@
                 >
                     {{ "Pages.Dashboard.Buttons.Update" | translate }}
                 </div>
-                <div class="delete-project-button" (click)="deleteProject()">
+                <div
+                    class="delete-project-button"
+                    (click)="openPopup(undefined, '', '', '', '', false, false, false, false, false, true)"
+                >
                     {{ "Pages.Dashboard.Buttons.Delete" | translate }}
                 </div>
             </div>

@@ -10,7 +10,7 @@ import { ConfirmedMailComponent } from './pages/confirmed-mail/confirmed-mail.co
 import { AuthGuardService as AuthGuard } from './services/guards/auth-guard.service';
 
 const routes: Routes = [
-    { path: '', redirectTo: 'home', pathMatch: 'full' },
+    { path: '', component: HomeComponent },
     { path: 'home', component: HomeComponent },
     { path: 'signin', component: SigninComponent },
     { path: 'signup', component: SignupComponent },

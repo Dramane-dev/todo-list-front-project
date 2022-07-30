@@ -1,5 +1,6 @@
 @import url("./theme/variables.scss");
 @import "../node_modules/@angular/material/prebuilt-themes/indigo-pink.css";
+@import url("../node_modules/angular-notifier/styles.css");
 
 body {
     margin: 0;
@@ -7,7 +8,6 @@ body {
     font-family: Inter, sans-serif;
     background-color: var(--dark-body-color);
 }
-
 
 mat-dialog-container {
     background-color: var(--dark-body-color) !important;
@@ -17,4 +17,7 @@ body::-webkit-scrollbar {
     display: none;
 }
 
-html, body { height: 100%; }
+html,
+body {
+    height: 100%;
+}

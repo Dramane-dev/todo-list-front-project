@@ -5,8 +5,7 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 60px;
-    margin: 5px;
+    height: fit-content;
     font-size: large;
     color: var(--white);
 
@@ -17,8 +16,8 @@
         height: 100%;
 
         .logo-and-home-container {
-            display: flex; 
-            flex-direction: row; 
+            display: flex;
+            flex-direction: row;
             margin-left: 2%;
             cursor: pointer;
 
@@ -52,9 +51,50 @@
         .navbar-item-border-signin {
             margin-right: 20px;
         }
-        
+
         .navbar-item {
             margin: 15px;
         }
+    }
+
+    .navbar-handset-screen {
+        display: flex;
+        flex-direction: row;
+
+        .icon {
+            color: var(--white);
+            font-size: 40px;
+            cursor: pointer;
+        }
+    }
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    font-size: medium;
+    color: var(--white);
+
+    .navbar-item-border {
+        width: 80%;
+        border: 1px solid var(--gray-before-navbar-item-border);
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .navbar-item {
+        width: 30%;
+        padding: 2%;
+        margin: 2%;
+        border: 1px solid var(--gray-before-navbar-item-border);
+        border-radius: 5px;
+        font-size: 15px;
+        font-weight: 700;
+        cursor: pointer;
+    }
+
+    .navbar-item:hover {
+        border: 1px solid var(--white);
     }
 }
